@@ -24,7 +24,7 @@ namespace AdminApp
             BaseDeDatos baseDeDatos = BaseDeDatos.Instance;
             SqlCommand sqlCommand = new SqlCommand();
             sqlCommand.CommandText = "SELECT USERNAME, PASSWORD FROM KOTINFO.CLIENTES " +
-                                     "WHERE ID_USUARIO=1";
+                                     "WHERE ID_USUARIO=2";
             sqlCommand.CommandType = CommandType.Text;
 
 
