@@ -26,5 +26,35 @@ namespace AdminApp.Properties
                 return defaultInstance;
             }
         }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SERVER\SQLEXPRESS;Initial Catalog=KOTINFO;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")]
+        public string CadenaDeConexion
+        {
+            get
+            {
+                return ((string)(this["CadenaDeConexion"]));
+            }
+            set
+            {
+                this["CadenaDeConexion"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2014-01-01 00:00:00.000")]
+        public string FechaDelSistema
+        {
+            get
+            {
+                return ((string)(this["FechaDelSistema"]));
+            }
+            set
+            {
+                this["FechaDelSistema"] = value;
+            }
+        }
     }
 }
