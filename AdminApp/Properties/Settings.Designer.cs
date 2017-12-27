@@ -29,7 +29,8 @@ namespace AdminApp.Properties
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SERVER\SQLEXPRESS;Initial Catalog=KOTINFO;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SERVER\\SQLEXPRESS;Initial Catalog=KOTINFO;Integrated Security=SSPI;")]
+
         public string CadenaDeConexion
         {
             get

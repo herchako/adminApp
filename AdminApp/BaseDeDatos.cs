@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
+using System.Windows.Forms;
+using System.Data;
+using System.Collections;
+
 
 namespace AdminApp
 {
@@ -33,7 +35,7 @@ namespace AdminApp
         }
         //---Singleton---//
 
-        public DataTable consulta(SqlCommand sqlCommand)
+        public DataTable consulta_sp(SqlCommand sqlCommand)
         {
             SqlConnection sqlConnection = new SqlConnection();
             sqlConnection.ConnectionString = Properties.Settings.Default.CadenaDeConexion;
@@ -46,6 +48,29 @@ namespace AdminApp
             sqlConnection.Close();
 
             return dataTable;
+        }
+
+        public DataSet consulta(SqlCommand sqlCommand)
+        {
+            SqlConnection sqlConnection = new SqlConnection();
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            DataSet ds = new DataSet();
+            sqlConnection.ConnectionString = Properties.Settings.Default.CadenaDeConexion;
+            sqlCommand.Connection = sqlConnection;
+            try
+            {
+                sqlConnection.Open();
+                adapter.SelectCommand = new SqlCommand(sqlCommand.CommandText, sqlConnection);
+                adapter.Fill(ds);
+                sqlConnection.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return ds;
         }
 
         public int ejecuta(SqlCommand sqlCommand)

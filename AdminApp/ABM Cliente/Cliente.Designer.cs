@@ -28,25 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txt_nombre = new System.Windows.Forms.TextBox();
+            this.dgv_clientes = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_clientes)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txt_nombre
             // 
-            this.textBox1.Location = new System.Drawing.Point(88, 29);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
+            this.txt_nombre.Location = new System.Drawing.Point(88, 29);
+            this.txt_nombre.Name = "txt_nombre";
+            this.txt_nombre.Size = new System.Drawing.Size(100, 20);
+            this.txt_nombre.TabIndex = 0;
             // 
-            // Form1
+            // dgv_clientes
+            // 
+            this.dgv_clientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_clientes.Location = new System.Drawing.Point(88, 65);
+            this.dgv_clientes.Name = "dgv_clientes";
+            this.dgv_clientes.Size = new System.Drawing.Size(240, 150);
+            this.dgv_clientes.TabIndex = 1;
+            // 
+            // Cliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(485, 487);
-            this.Controls.Add(this.textBox1);
-            this.Name = "Form1";
+            this.Controls.Add(this.dgv_clientes);
+            this.Controls.Add(this.txt_nombre);
+            this.Name = "Cliente";
             this.Text = "Clientes";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_clientes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -54,7 +66,8 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_nombre;
+        private System.Windows.Forms.DataGridView dgv_clientes;
     }
 }
 
