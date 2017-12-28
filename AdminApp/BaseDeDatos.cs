@@ -35,20 +35,6 @@ namespace AdminApp
         }
         //---Singleton---//
 
-        public DataTable consulta_sp(SqlCommand sqlCommand)
-        {
-            SqlConnection sqlConnection = new SqlConnection();
-            sqlConnection.ConnectionString = Properties.Settings.Default.CadenaDeConexion;
-            sqlCommand.Connection = sqlConnection;
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
-            sqlDataAdapter.SelectCommand = sqlCommand;
-            DataTable dataTable = new DataTable();
-            sqlConnection.Open();
-            sqlDataAdapter.Fill(dataTable);
-            sqlConnection.Close();
-
-            return dataTable;
-        }
 
         public DataSet consulta(SqlCommand sqlCommand)
         {
