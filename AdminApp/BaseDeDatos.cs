@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Data;
 using System.Collections;
+using System.Configuration;
 
 
 namespace AdminApp
@@ -41,7 +42,7 @@ namespace AdminApp
             SqlConnection sqlConnection = new SqlConnection();
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataSet ds = new DataSet();
-            sqlConnection.ConnectionString = Properties.Settings.Default.CadenaDeConexion;
+            sqlConnection.ConnectionString = ConfigurationManager.ConnectionStrings["InmobiliariaContext"].ConnectionString;
             sqlCommand.Connection = sqlConnection;
             try
             {
@@ -49,7 +50,6 @@ namespace AdminApp
                 adapter.SelectCommand = new SqlCommand(sqlCommand.CommandText, sqlConnection);
                 adapter.Fill(ds);
                 sqlConnection.Close();
-
             }
             catch (Exception ex)
             {
@@ -57,17 +57,32 @@ namespace AdminApp
             }
 
             return ds;
+     }
+
+        public DataTable consulta_parametrizada(SqlCommand sqlCommand)
+        {
+            SqlConnection sqlConnection = new SqlConnection();
+            sqlConnection.ConnectionString = ConfigurationManager.ConnectionStrings["InmobiliariaContext"].ConnectionString;
+            sqlCommand.Connection = sqlConnection;
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            sqlDataAdapter.SelectCommand = sqlCommand;
+            DataTable dataTable = new DataTable();
+            sqlConnection.Open();
+            sqlDataAdapter.Fill(dataTable);
+            sqlConnection.Close();
+
+            return dataTable;
         }
 
         public int ejecuta(SqlCommand sqlCommand)
         {
             SqlConnection sqlConnection = new SqlConnection();
-            sqlConnection.ConnectionString = Properties.Settings.Default.CadenaDeConexion;
+            sqlConnection.ConnectionString = ConfigurationManager.ConnectionStrings["InmobiliariaContext"].ConnectionString;
             sqlCommand.Connection = sqlConnection;
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             sqlDataAdapter.SelectCommand = sqlCommand;
             sqlConnection.Open();
-            int valor = Convert.ToInt32(sqlDataAdapter.SelectCommand.ExecuteScalar()); //Revisar
+            int valor = Convert.ToInt32(sqlDataAdapter.SelectCommand.ExecuteScalar()); 
             sqlConnection.Close();
 
             return valor;
