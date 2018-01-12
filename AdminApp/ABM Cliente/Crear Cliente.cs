@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace AdminApp
 {
-    public partial class Cliente : Form
+    public partial class Crear_Cliente : Form
     {
-        public Cliente()
+        public Crear_Cliente()
         {
             InitializeComponent();
 
@@ -146,6 +146,7 @@ namespace AdminApp
         private void limpiarGroupBox()
         {
             this.Controls.OfType<GroupBox>().ToList().ForEach(groupBox => groupBox.Controls.OfType<TextBox>().ToList().ForEach(textBox => textBox.Text = String.Empty));
+            this.Controls.OfType<GroupBox>().ToList().ForEach(groupBox => groupBox.Controls.OfType<RichTextBox>().ToList().ForEach(richTextBox => richTextBox.Text = String.Empty));
             this.Controls.OfType<GroupBox>().ToList().ForEach(groupBox => groupBox.Controls.OfType<MaskedTextBox>().ToList().ForEach(maskedTextBox => maskedTextBox.Text = String.Empty));
         }
 

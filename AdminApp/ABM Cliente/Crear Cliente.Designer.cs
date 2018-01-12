@@ -1,6 +1,6 @@
 ﻿namespace AdminApp
 {
-    partial class Cliente
+    partial class Crear_Cliente
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Cliente));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Crear_Cliente));
             this.txt_nombre = new System.Windows.Forms.TextBox();
             this.lbl_nombre = new System.Windows.Forms.Label();
             this.lbl_apellido = new System.Windows.Forms.Label();
@@ -342,6 +342,7 @@
             // 
             // cmb_localidad
             // 
+            this.cmb_localidad.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cmb_localidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmb_localidad.FormattingEnabled = true;
             this.cmb_localidad.Location = new System.Drawing.Point(84, 265);
@@ -361,6 +362,8 @@
             // 
             // cmb_partido
             // 
+            this.cmb_partido.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmb_partido.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmb_partido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmb_partido.FormattingEnabled = true;
             this.cmb_partido.Location = new System.Drawing.Point(269, 228);
@@ -381,6 +384,8 @@
             // 
             // cmb_provincia
             // 
+            this.cmb_provincia.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmb_provincia.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmb_provincia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmb_provincia.FormattingEnabled = true;
             this.cmb_provincia.Location = new System.Drawing.Point(70, 228);
@@ -519,7 +524,7 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Cliente
+            // Crear_Cliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -529,7 +534,7 @@
             this.Controls.Add(this.btn_guardar);
             this.Controls.Add(this.btn_cerrar);
             this.Controls.Add(this.label5);
-            this.Name = "Cliente";
+            this.Name = "Crear_Cliente";
             this.Text = "Clientes";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.grp_cliente.ResumeLayout(false);
