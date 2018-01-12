@@ -30,9 +30,12 @@
         {
             this.cmb_buscar_apellido = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_buscar = new System.Windows.Forms.Button();
             this.lbl_buscar_apellido = new System.Windows.Forms.Label();
             this.txt_nombre = new System.Windows.Forms.TextBox();
             this.lbl_nombre = new System.Windows.Forms.Label();
+            this.lbl_buscar_id = new System.Windows.Forms.Label();
+            this.txt_buscar_id = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,6 +53,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txt_buscar_id);
+            this.groupBox1.Controls.Add(this.lbl_buscar_id);
+            this.groupBox1.Controls.Add(this.btn_buscar);
             this.groupBox1.Controls.Add(this.lbl_buscar_apellido);
             this.groupBox1.Controls.Add(this.cmb_buscar_apellido);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -59,6 +65,20 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Buscar cliente";
+            // 
+            // btn_buscar
+            // 
+            this.btn_buscar.BackgroundImage = global::AdminApp.Properties.Resources.search_button_without_text_md;
+            this.btn_buscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_buscar.DialogResult = System.Windows.Forms.DialogResult.Yes;
+            this.btn_buscar.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btn_buscar.Location = new System.Drawing.Point(476, 16);
+            this.btn_buscar.Name = "btn_buscar";
+            this.btn_buscar.Size = new System.Drawing.Size(44, 44);
+            this.btn_buscar.TabIndex = 2;
+            this.btn_buscar.Text = " ";
+            this.btn_buscar.UseVisualStyleBackColor = true;
+            this.btn_buscar.Click += new System.EventHandler(this.button1_Click);
             // 
             // lbl_buscar_apellido
             // 
@@ -87,6 +107,24 @@
             this.lbl_nombre.TabIndex = 3;
             this.lbl_nombre.Text = "Nombre";
             // 
+            // lbl_buscar_id
+            // 
+            this.lbl_buscar_id.AutoSize = true;
+            this.lbl_buscar_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            this.lbl_buscar_id.Location = new System.Drawing.Point(331, 28);
+            this.lbl_buscar_id.Name = "lbl_buscar_id";
+            this.lbl_buscar_id.Size = new System.Drawing.Size(46, 24);
+            this.lbl_buscar_id.TabIndex = 3;
+            this.lbl_buscar_id.Text = "#ID:";
+            // 
+            // txt_buscar_id
+            // 
+            this.txt_buscar_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.txt_buscar_id.Location = new System.Drawing.Point(383, 21);
+            this.txt_buscar_id.Name = "txt_buscar_id";
+            this.txt_buscar_id.Size = new System.Drawing.Size(87, 35);
+            this.txt_buscar_id.TabIndex = 4;
+            // 
             // Editar_Cliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -112,5 +150,8 @@
         private System.Windows.Forms.Label lbl_buscar_apellido;
         private System.Windows.Forms.TextBox txt_nombre;
         private System.Windows.Forms.Label lbl_nombre;
+        private System.Windows.Forms.Button btn_buscar;
+        private System.Windows.Forms.TextBox txt_buscar_id;
+        private System.Windows.Forms.Label lbl_buscar_id;
     }
 }

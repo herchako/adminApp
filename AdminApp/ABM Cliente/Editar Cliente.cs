@@ -39,16 +39,43 @@ namespace AdminApp.ABM_Cliente
 
         private void cmb_buscar_apellido_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            buscarDatosClientePorId(cmb_buscar_apellido.SelectedValue);
+
+        }
+
+        private void buscarDatosClientePorId(Object idCliente)
+        {
             DataSet ds = new DataSet();
             BaseDeDatos baseDeDatos = BaseDeDatos.Instance;
             SqlCommand sqlCommand = new SqlCommand();
             sqlCommand.Parameters.Clear();
             sqlCommand.CommandType = CommandType.StoredProcedure;
             sqlCommand.CommandText = "SP_TRAER_CLIENTE_POR_ID";
-            sqlCommand.Parameters.AddWithValue("@id_cliente", cmb_buscar_apellido.SelectedValue);
-            DataTable dt_tipo = baseDeDatos.consulta_parametrizada(sqlCommand);
-            txt_nombre.Text = dt_tipo.Rows[0][3].ToString();
+            sqlCommand.Parameters.AddWithValue("@id_cliente", idCliente);
+            DataTable dt_cliente = baseDeDatos.consulta_parametrizada(sqlCommand);
+            if ((dt_cliente != null) && (dt_cliente.Rows.Count != 0))
+            {
+                txt_nombre.Text = dt_cliente.Rows[0][3].ToString();
+            }
+            else
+            {
+                MessageBox.Show("Cliente inexistente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             sqlCommand.Parameters.Clear();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int id_cliente = Int32.Parse(txt_buscar_id.Text);
+                buscarDatosClientePorId(id_cliente);
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("El #ID debe ser un número", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
 
         }
     }

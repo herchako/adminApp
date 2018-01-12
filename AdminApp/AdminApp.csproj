@@ -139,7 +139,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\search-button-without-text-md.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\email.png" />
   </ItemGroup>
