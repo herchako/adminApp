@@ -57,7 +57,7 @@ namespace AdminApp
             }
 
             return ds;
-     }
+        }
 
         public DataTable consulta_parametrizada(SqlCommand sqlCommand)
         {
@@ -82,7 +82,7 @@ namespace AdminApp
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             sqlDataAdapter.SelectCommand = sqlCommand;
             sqlConnection.Open();
-            int valor = Convert.ToInt32(sqlDataAdapter.SelectCommand.ExecuteScalar()); 
+            int valor = Convert.ToInt32(sqlDataAdapter.SelectCommand.ExecuteScalar());
             sqlConnection.Close();
 
             return valor;

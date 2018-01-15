@@ -117,4 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pb_email.InitialImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EwAACxMBAJqcGAAAAP9JREFUOE/l1E1qwkAYxvERhXoBLVisdNdFvUHBrUJxLXiNggdw1XVBoSeooCAI
+        0g8pLuyyi96liogL/+9kJkw041fd+cCP5E3CAzMhUeeZa3RP5ArqDkPc/tOHOerCP9RkODJ1TBEWvmOA
+        Z1xg36TRRh+fCAtfkUADPyhgV27wi0c9BXsYKbQpYYGKnuJTxQz3egriLZRcYowmknLBJIUnjJCRC062
+        FsryXzDBF7LImfkbsm/yjBtvoS2TFyR5gCxviTLkfstwS2ML18ts5AXkg1OduNKNQl+ZL+ulkcIODimz
+        cUt7CAvneDPnhypCPjvp0IWyN7LkU9A/h7OKUit3xFB6R+xvYAAAAABJRU5ErkJggg==
+</value>
+  </data>
 </root>

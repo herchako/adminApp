@@ -25,8 +25,8 @@ namespace AdminApp
             cargarComboBox(cmb_tipo_cliente, "SP_TRAER_TIPO_CLIENTES", "DESCRIPCION", "ID_TIPO_CLIENTE");
             cargarComboBox(cmb_tipo_cuil_cuit, "SP_TRAER_TIPO_CUIL_CUIT", "DESCRIPCION", "ID_TIPO_CUIL_CUIT");
             cargarComboBox(cmb_provincia, "SP_TRAER_PROVINCIAS", "NOMBRE", "ID_PROVINCIA");
-            actualizarComboBox(cmb_partido, "SP_TRAER_DEPARTAMENTOS_POR_PROVINCIA", "NOMBRE", "ID_DEPARTAMENTO", "1","@id_provincia");
-            actualizarComboBox(cmb_localidad, "SP_TRAER_LOCALIDAD_POR_DEPARTAMENTO", "NOMBRE", "ID_LOCALIDAD","65", "@id_departamento");
+            actualizarComboBox(cmb_partido, "SP_TRAER_DEPARTAMENTOS_POR_PROVINCIA", "NOMBRE", "ID_DEPARTAMENTO", "1", "@id_provincia");
+            actualizarComboBox(cmb_localidad, "SP_TRAER_LOCALIDAD_POR_DEPARTAMENTO", "NOMBRE", "ID_LOCALIDAD", "65", "@id_departamento");
         }
 
         private void cargarComboBox(ComboBox comboBox, string storedProcedure, string displayMember, string valueMember)
@@ -53,7 +53,7 @@ namespace AdminApp
             sqlCommand.CommandText = storedProcedure;
             sqlCommand.CommandType = CommandType.StoredProcedure;
             sqlCommand.Parameters.AddWithValue(paramName, selectedIndex);
-            
+
             DataTable dt_tipo = baseDeDatos.consulta_parametrizada(sqlCommand);
             comboBox.DataSource = dt_tipo;
             comboBox.DisplayMember = displayMember;
@@ -83,7 +83,7 @@ namespace AdminApp
 
             pintarCamposIncompletos(camposObligatorios);
 
-            if (camposObligatorios.All<Control>(campos => campos.Text != "")&&cmb_tipo_cliente.SelectedIndex!=0)
+            if (camposObligatorios.All<Control>(campos => campos.Text != "") && cmb_tipo_cliente.SelectedIndex != 0)
                 return true;
             else
                 return false;
@@ -94,7 +94,8 @@ namespace AdminApp
         {
             var camposIncompletos = camposObligatorios.FindAll(campos => campos.Text == "");
             camposIncompletos.ForEach(campos => campos.BackColor = Color.Red);
-            if (cmb_tipo_cliente.SelectedIndex == 0) {
+            if (cmb_tipo_cliente.SelectedIndex == 0)
+            {
                 cmb_tipo_cliente.BackColor = Color.Red;
             }
             var camposCompletos = camposObligatorios.FindAll(campos => campos.Text != "");
@@ -174,9 +175,10 @@ namespace AdminApp
         {
             if (cmb_provincia.SelectedValue.ToString().Equals("System.Data.DataRowView"))
             {
-                actualizarComboBox(cmb_partido, "SP_TRAER_DEPARTAMENTOS_POR_PROVINCIA", "NOMBRE", "ID_DEPARTAMENTO", "1" , "@id_provincia");
+                actualizarComboBox(cmb_partido, "SP_TRAER_DEPARTAMENTOS_POR_PROVINCIA", "NOMBRE", "ID_DEPARTAMENTO", "1", "@id_provincia");
             }
-            else {
+            else
+            {
                 actualizarComboBox(cmb_partido, "SP_TRAER_DEPARTAMENTOS_POR_PROVINCIA", "NOMBRE", "ID_DEPARTAMENTO", cmb_provincia.SelectedValue.ToString(), "@id_provincia");
 
             }
