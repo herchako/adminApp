@@ -119,6 +119,7 @@ namespace AdminApp
             sqlCommand.Parameters.AddWithValue("@celular", msktxt_celular.Text);
             sqlCommand.Parameters.AddWithValue("@otro_tel", txt_otro_tel.Text);
             sqlCommand.Parameters.AddWithValue("@id_tipo_cliente", cmb_tipo_cliente.SelectedValue);
+            sqlCommand.Parameters.AddWithValue("@email", txt_email.Text);
             sqlCommand.Parameters.AddWithValue("@id_tipo_cuil_cuit", cmb_tipo_cuil_cuit.SelectedValue);
             sqlCommand.Parameters.AddWithValue("@dni", msk_dni.Text);
             sqlCommand.Parameters.AddWithValue("@fecha_nacimiento", dtp_nacimiento.Text);

@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Editar_Cliente));
             this.cmb_buscar_apellido = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txt_buscar_id = new System.Windows.Forms.TextBox();
+            this.txt_buscar_cod = new System.Windows.Forms.TextBox();
             this.lbl_buscar_id = new System.Windows.Forms.Label();
             this.btn_buscar = new System.Windows.Forms.Button();
             this.lbl_buscar_apellido = new System.Windows.Forms.Label();
@@ -74,6 +74,9 @@
             this.txt_otro_tel = new System.Windows.Forms.TextBox();
             this.lbl_celular = new System.Windows.Forms.Label();
             this.txt_apellido = new System.Windows.Forms.TextBox();
+            this.btn_guardar = new System.Windows.Forms.Button();
+            this.btn_cerrar = new System.Windows.Forms.Button();
+            this.lnk_id_cliente = new System.Windows.Forms.LinkLabel();
             this.groupBox1.SuspendLayout();
             this.grp_cliente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_email)).BeginInit();
@@ -85,15 +88,15 @@
             this.cmb_buscar_apellido.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmb_buscar_apellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.cmb_buscar_apellido.FormattingEnabled = true;
-            this.cmb_buscar_apellido.Location = new System.Drawing.Point(74, 25);
+            this.cmb_buscar_apellido.Location = new System.Drawing.Point(81, 25);
             this.cmb_buscar_apellido.Name = "cmb_buscar_apellido";
-            this.cmb_buscar_apellido.Size = new System.Drawing.Size(169, 32);
+            this.cmb_buscar_apellido.Size = new System.Drawing.Size(209, 32);
             this.cmb_buscar_apellido.TabIndex = 0;
             this.cmb_buscar_apellido.SelectionChangeCommitted += new System.EventHandler(this.cmb_buscar_apellido_SelectionChangeCommitted);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txt_buscar_id);
+            this.groupBox1.Controls.Add(this.txt_buscar_cod);
             this.groupBox1.Controls.Add(this.lbl_buscar_id);
             this.groupBox1.Controls.Add(this.btn_buscar);
             this.groupBox1.Controls.Add(this.lbl_buscar_apellido);
@@ -106,20 +109,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Buscar cliente";
             // 
-            // txt_buscar_id
+            // txt_buscar_cod
             // 
-            this.txt_buscar_id.AcceptsReturn = true;
-            this.txt_buscar_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.txt_buscar_id.Location = new System.Drawing.Point(310, 21);
-            this.txt_buscar_id.Name = "txt_buscar_id";
-            this.txt_buscar_id.Size = new System.Drawing.Size(87, 35);
-            this.txt_buscar_id.TabIndex = 4;
+            this.txt_buscar_cod.AcceptsReturn = true;
+            this.txt_buscar_cod.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.txt_buscar_cod.Location = new System.Drawing.Point(338, 21);
+            this.txt_buscar_cod.Name = "txt_buscar_cod";
+            this.txt_buscar_cod.Size = new System.Drawing.Size(59, 35);
+            this.txt_buscar_cod.TabIndex = 4;
             // 
             // lbl_buscar_id
             // 
             this.lbl_buscar_id.AutoSize = true;
             this.lbl_buscar_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            this.lbl_buscar_id.Location = new System.Drawing.Point(258, 28);
+            this.lbl_buscar_id.Location = new System.Drawing.Point(295, 27);
             this.lbl_buscar_id.Name = "lbl_buscar_id";
             this.lbl_buscar_id.Size = new System.Drawing.Size(46, 24);
             this.lbl_buscar_id.TabIndex = 3;
@@ -192,7 +195,7 @@
             this.grp_cliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.grp_cliente.Location = new System.Drawing.Point(12, 92);
             this.grp_cliente.Name = "grp_cliente";
-            this.grp_cliente.Size = new System.Drawing.Size(460, 422);
+            this.grp_cliente.Size = new System.Drawing.Size(460, 425);
             this.grp_cliente.TabIndex = 18;
             this.grp_cliente.TabStop = false;
             this.grp_cliente.Text = "Datos Cliente";
@@ -454,6 +457,8 @@
             // 
             // cmb_tipo_cliente
             // 
+            this.cmb_tipo_cliente.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.cmb_tipo_cliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_tipo_cliente.FormattingEnabled = true;
             this.cmb_tipo_cliente.Location = new System.Drawing.Point(44, 52);
             this.cmb_tipo_cliente.Name = "cmb_tipo_cliente";
@@ -552,12 +557,48 @@
             this.txt_apellido.Size = new System.Drawing.Size(157, 24);
             this.txt_apellido.TabIndex = 9;
             // 
+            // btn_guardar
+            // 
+            this.btn_guardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.btn_guardar.Location = new System.Drawing.Point(274, 523);
+            this.btn_guardar.Name = "btn_guardar";
+            this.btn_guardar.Size = new System.Drawing.Size(96, 34);
+            this.btn_guardar.TabIndex = 20;
+            this.btn_guardar.Text = "Guardar";
+            this.btn_guardar.UseVisualStyleBackColor = true;
+            this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
+            // 
+            // btn_cerrar
+            // 
+            this.btn_cerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cerrar.Location = new System.Drawing.Point(376, 523);
+            this.btn_cerrar.Name = "btn_cerrar";
+            this.btn_cerrar.Size = new System.Drawing.Size(96, 34);
+            this.btn_cerrar.TabIndex = 19;
+            this.btn_cerrar.Text = "Cerrar";
+            this.btn_cerrar.UseVisualStyleBackColor = true;
+            this.btn_cerrar.Click += new System.EventHandler(this.btn_cerrar_Click);
+            // 
+            // lnk_id_cliente
+            // 
+            this.lnk_id_cliente.AutoSize = true;
+            this.lnk_id_cliente.Location = new System.Drawing.Point(4, 547);
+            this.lnk_id_cliente.Name = "lnk_id_cliente";
+            this.lnk_id_cliente.Size = new System.Drawing.Size(22, 13);
+            this.lnk_id_cliente.TabIndex = 21;
+            this.lnk_id_cliente.TabStop = true;
+            this.lnk_id_cliente.Text = "#id";
+            this.lnk_id_cliente.Visible = false;
+            // 
             // Editar_Cliente
             // 
             this.AcceptButton = this.btn_buscar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(486, 569);
+            this.Controls.Add(this.lnk_id_cliente);
+            this.Controls.Add(this.btn_guardar);
+            this.Controls.Add(this.btn_cerrar);
             this.Controls.Add(this.grp_cliente);
             this.Controls.Add(this.groupBox1);
             this.Name = "Editar_Cliente";
@@ -569,6 +610,7 @@
             this.grp_cliente.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_email)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -578,7 +620,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lbl_buscar_apellido;
         private System.Windows.Forms.Button btn_buscar;
-        private System.Windows.Forms.TextBox txt_buscar_id;
+        private System.Windows.Forms.TextBox txt_buscar_cod;
         private System.Windows.Forms.Label lbl_buscar_id;
         private System.Windows.Forms.GroupBox grp_cliente;
         private System.Windows.Forms.RichTextBox rtb_observaciones;
@@ -619,5 +661,8 @@
         private System.Windows.Forms.TextBox txt_otro_tel;
         private System.Windows.Forms.Label lbl_celular;
         private System.Windows.Forms.TextBox txt_apellido;
+        private System.Windows.Forms.Button btn_guardar;
+        private System.Windows.Forms.Button btn_cerrar;
+        private System.Windows.Forms.LinkLabel lnk_id_cliente;
     }
 }
