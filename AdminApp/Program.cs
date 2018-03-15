@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace AdminApp
 {
     static class Program
@@ -17,7 +18,7 @@ namespace AdminApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Editar_Cliente());
+            Application.Run(new MenuPrincipal());
         }
     }
 }

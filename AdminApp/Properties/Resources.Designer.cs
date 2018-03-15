@@ -73,6 +73,46 @@ namespace AdminApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap if_Asset_20_2342730 {
+            get {
+                object obj = ResourceManager.GetObject("if_Asset_20_2342730", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_line_chart_1608449 {
+            get {
+                object obj = ResourceManager.GetObject("if_line-chart_1608449", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_Searchicons_search_people2_825453 {
+            get {
+                object obj = ResourceManager.GetObject("if_Searchicons-search-people2_825453", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_user_profile_edit_103781 {
+            get {
+                object obj = ResourceManager.GetObject("if_user_profile_edit_103781", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap search_button_without_text_md {
             get {
                 object obj = ResourceManager.GetObject("search-button-without-text-md", resourceCulture);

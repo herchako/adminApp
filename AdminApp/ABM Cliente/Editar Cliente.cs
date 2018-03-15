@@ -102,7 +102,6 @@ namespace AdminApp.ABM_Cliente
             msktxt_celular.Text = dt_cliente.Rows[0][7].ToString();
             txt_otro_tel.Text = dt_cliente.Rows[0][8].ToString();
             msk_dni.Text = dt_cliente.Rows[0][9].ToString();
-
             cmb_tipo_cuil_cuit.SelectedValue = dt_cliente.Rows[0][10].ToString();
             dtp_nacimiento.Text = dt_cliente.Rows[0][11].ToString();
             txt_calle.Text = dt_cliente.Rows[0][12].ToString();
@@ -121,7 +120,7 @@ namespace AdminApp.ABM_Cliente
             try
             {
 
-                int cod_cliente = string.IsNullOrEmpty(txt_buscar_cod.Text) ? 0 : int.Parse(txt_buscar_cod.Text);//que mierda pasa!?
+                int cod_cliente = string.IsNullOrEmpty(txt_buscar_cod.Text) ? -1 : int.Parse(txt_buscar_cod.Text);//que mierda pasa!?
                 buscarDatosClientePorCod(cod_cliente);
             }
             catch (FormatException ex)
@@ -219,6 +218,21 @@ namespace AdminApp.ABM_Cliente
 
         private void btn_guardar_Click(object sender, EventArgs e)
         {
+            if (verificar_campos_obligatorios())
+            {
+                guardarCambios();
+                MessageBox.Show("Guardado!", "Exito");
+                limpiarGroupBox();
+            }
+            else
+            {
+                MessageBox.Show("No puedes dejar el campo vacio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+        }
+
+        private void guardarCambios()
+        {
             BaseDeDatos baseDeDatos = BaseDeDatos.Instance;
             SqlCommand sqlCommand = new SqlCommand();
             sqlCommand.CommandText = "SP_ACTUALIZAR_CLIENTE_POR_ID";
@@ -244,6 +258,14 @@ namespace AdminApp.ABM_Cliente
             sqlCommand.Parameters.AddWithValue("@domicilio_localidad", cmb_localidad.SelectedValue);
             sqlCommand.Parameters.AddWithValue("@observaciones", rtb_observaciones.Text);
             baseDeDatos.ejecuta(sqlCommand);
+        }
+
+        private void limpiarGroupBox()
+        {
+            this.Controls.OfType<GroupBox>().ToList().ForEach(groupBox => groupBox.Controls.OfType<TextBox>().ToList().ForEach(textBox => textBox.Text = String.Empty));
+            this.Controls.OfType<GroupBox>().ToList().ForEach(groupBox => groupBox.Controls.OfType<RichTextBox>().ToList().ForEach(richTextBox => richTextBox.Text = String.Empty));
+            this.Controls.OfType<GroupBox>().ToList().ForEach(groupBox => groupBox.Controls.OfType<MaskedTextBox>().ToList().ForEach(maskedTextBox => maskedTextBox.Text = String.Empty));
+            this.txt_buscar_cod.Text = null;
         }
     }
 }
