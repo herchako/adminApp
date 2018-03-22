@@ -1,4 +1,5 @@
 ﻿using AdminApp.ABM_Cliente;
+using AdminApp.ABM_Pendientes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace AdminApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MenuPrincipal());
+            Application.Run(new Crear_Pendiente());
         }
     }
 }

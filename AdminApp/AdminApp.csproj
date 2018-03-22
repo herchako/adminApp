@@ -89,6 +89,12 @@
     <Compile Include="ABM Pendientes\Crear Pendiente.Designer.cs">
       <DependentUpon>Crear Pendiente.cs</DependentUpon>
     </Compile>
+    <Compile Include="ABM Pendientes\Pendientes Cliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM Pendientes\Pendientes Cliente.Designer.cs">
+      <DependentUpon>Pendientes Cliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseDeDatos.cs" />
     <Compile Include="ABM Cliente\Crear Cliente.cs">
       <SubType>Form</SubType>
@@ -112,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ABM Pendientes\Crear Pendiente.resx">
       <DependentUpon>Crear Pendiente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM Pendientes\Pendientes Cliente.resx">
+      <DependentUpon>Pendientes Cliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu Pricipal.resx">
       <DependentUpon>Menu Pricipal.cs</DependentUpon>

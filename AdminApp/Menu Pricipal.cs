@@ -36,6 +36,8 @@ namespace AdminApp
             Crear_Pendiente crear_pendiente = new Crear_Pendiente();
             crear_pendiente.Show();
         }
+
+
     }
     
 }

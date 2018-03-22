@@ -76,6 +76,12 @@ namespace AdminApp.ABM_Pendientes
             sqlCommand.Parameters.AddWithValue("@observaciones", rtb_observaciones.Text);
             baseDeDatos.ejecuta(sqlCommand);
         }
+
+        private void cmb_buscar_apellido_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            Pendientes_Cliente pendientes_cliente = new Pendientes_Cliente(Int32.Parse(cmb_buscar_apellido.SelectedValue.ToString()));
+            pendientes_cliente.Show();
+        }
     }
     }
 

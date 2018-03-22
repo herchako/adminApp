@@ -31,28 +31,28 @@
             this.grpbx_BuscarPendiente = new System.Windows.Forms.GroupBox();
             this.txt_buscar_cod = new System.Windows.Forms.TextBox();
             this.lbl_buscar_id = new System.Windows.Forms.Label();
+            this.btn_buscar = new System.Windows.Forms.Button();
             this.lbl_buscar_apellido = new System.Windows.Forms.Label();
             this.cmb_buscar_apellido = new System.Windows.Forms.ComboBox();
-            this.btn_buscar = new System.Windows.Forms.Button();
             this.txt_concepto = new System.Windows.Forms.TextBox();
             this.lbl_periodo = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lbl_concepto = new System.Windows.Forms.Label();
             this.lbl_direccion = new System.Windows.Forms.Label();
             this.grp_pendiente = new System.Windows.Forms.GroupBox();
-            this.txt_periodo = new System.Windows.Forms.TextBox();
-            this.txt_direccion = new System.Windows.Forms.TextBox();
-            this.txt_importe = new System.Windows.Forms.TextBox();
-            this.lbl_importe = new System.Windows.Forms.Label();
-            this.lbl_observaciones = new System.Windows.Forms.Label();
-            this.rtb_observaciones = new System.Windows.Forms.RichTextBox();
-            this.cmb_cargar_apellido = new System.Windows.Forms.ComboBox();
-            this.btn_guardar = new System.Windows.Forms.Button();
-            this.btn_cerrar = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.chkbox_pagado = new System.Windows.Forms.CheckBox();
             this.dtp_fecha = new System.Windows.Forms.DateTimePicker();
             this.lbl_fecha = new System.Windows.Forms.Label();
+            this.chkbox_pagado = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmb_cargar_apellido = new System.Windows.Forms.ComboBox();
+            this.rtb_observaciones = new System.Windows.Forms.RichTextBox();
+            this.lbl_observaciones = new System.Windows.Forms.Label();
+            this.txt_importe = new System.Windows.Forms.TextBox();
+            this.lbl_importe = new System.Windows.Forms.Label();
+            this.txt_direccion = new System.Windows.Forms.TextBox();
+            this.txt_periodo = new System.Windows.Forms.TextBox();
+            this.btn_guardar = new System.Windows.Forms.Button();
+            this.btn_cerrar = new System.Windows.Forms.Button();
             this.grpbx_BuscarPendiente.SuspendLayout();
             this.grp_pendiente.SuspendLayout();
             this.SuspendLayout();
@@ -91,6 +91,19 @@
             this.lbl_buscar_id.TabIndex = 3;
             this.lbl_buscar_id.Text = "#ID:";
             // 
+            // btn_buscar
+            // 
+            this.btn_buscar.BackgroundImage = global::AdminApp.Properties.Resources.search_button_without_text_md;
+            this.btn_buscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_buscar.DialogResult = System.Windows.Forms.DialogResult.Yes;
+            this.btn_buscar.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btn_buscar.Location = new System.Drawing.Point(403, 16);
+            this.btn_buscar.Name = "btn_buscar";
+            this.btn_buscar.Size = new System.Drawing.Size(44, 45);
+            this.btn_buscar.TabIndex = 2;
+            this.btn_buscar.Text = " ";
+            this.btn_buscar.UseVisualStyleBackColor = true;
+            // 
             // lbl_buscar_apellido
             // 
             this.lbl_buscar_apellido.AutoSize = true;
@@ -111,19 +124,7 @@
             this.cmb_buscar_apellido.Name = "cmb_buscar_apellido";
             this.cmb_buscar_apellido.Size = new System.Drawing.Size(209, 32);
             this.cmb_buscar_apellido.TabIndex = 0;
-            // 
-            // btn_buscar
-            // 
-            this.btn_buscar.BackgroundImage = global::AdminApp.Properties.Resources.search_button_without_text_md;
-            this.btn_buscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_buscar.DialogResult = System.Windows.Forms.DialogResult.Yes;
-            this.btn_buscar.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btn_buscar.Location = new System.Drawing.Point(403, 16);
-            this.btn_buscar.Name = "btn_buscar";
-            this.btn_buscar.Size = new System.Drawing.Size(44, 45);
-            this.btn_buscar.TabIndex = 2;
-            this.btn_buscar.Text = " ";
-            this.btn_buscar.UseVisualStyleBackColor = true;
+            this.cmb_buscar_apellido.SelectionChangeCommitted += new System.EventHandler(this.cmb_buscar_apellido_SelectionChangeCommitted);
             // 
             // txt_concepto
             // 
@@ -199,21 +200,74 @@
             this.grp_pendiente.TabStop = false;
             this.grp_pendiente.Text = "Informacion";
             // 
-            // txt_periodo
+            // dtp_fecha
             // 
-            this.txt_periodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.txt_periodo.Location = new System.Drawing.Point(81, 88);
-            this.txt_periodo.Name = "txt_periodo";
-            this.txt_periodo.Size = new System.Drawing.Size(156, 26);
-            this.txt_periodo.TabIndex = 24;
+            this.dtp_fecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtp_fecha.Location = new System.Drawing.Point(322, 90);
+            this.dtp_fecha.MinDate = new System.DateTime(1923, 1, 1, 0, 0, 0, 0);
+            this.dtp_fecha.Name = "dtp_fecha";
+            this.dtp_fecha.Size = new System.Drawing.Size(125, 26);
+            this.dtp_fecha.TabIndex = 51;
+            this.dtp_fecha.Value = new System.DateTime(2018, 3, 15, 0, 0, 0, 0);
             // 
-            // txt_direccion
+            // lbl_fecha
             // 
-            this.txt_direccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.txt_direccion.Location = new System.Drawing.Point(81, 120);
-            this.txt_direccion.Name = "txt_direccion";
-            this.txt_direccion.Size = new System.Drawing.Size(366, 26);
-            this.txt_direccion.TabIndex = 25;
+            this.lbl_fecha.AutoSize = true;
+            this.lbl_fecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_fecha.Location = new System.Drawing.Point(262, 94);
+            this.lbl_fecha.Name = "lbl_fecha";
+            this.lbl_fecha.Size = new System.Drawing.Size(54, 20);
+            this.lbl_fecha.TabIndex = 50;
+            this.lbl_fecha.Text = "Fecha";
+            // 
+            // chkbox_pagado
+            // 
+            this.chkbox_pagado.AutoSize = true;
+            this.chkbox_pagado.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkbox_pagado.Location = new System.Drawing.Point(430, 28);
+            this.chkbox_pagado.Name = "chkbox_pagado";
+            this.chkbox_pagado.Size = new System.Drawing.Size(15, 14);
+            this.chkbox_pagado.TabIndex = 49;
+            this.chkbox_pagado.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(318, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(93, 24);
+            this.label2.TabIndex = 48;
+            this.label2.Text = "Pagado: ";
+            // 
+            // cmb_cargar_apellido
+            // 
+            this.cmb_cargar_apellido.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmb_cargar_apellido.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmb_cargar_apellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.cmb_cargar_apellido.FormattingEnabled = true;
+            this.cmb_cargar_apellido.Location = new System.Drawing.Point(81, 18);
+            this.cmb_cargar_apellido.Name = "cmb_cargar_apellido";
+            this.cmb_cargar_apellido.Size = new System.Drawing.Size(209, 32);
+            this.cmb_cargar_apellido.TabIndex = 47;
+            // 
+            // rtb_observaciones
+            // 
+            this.rtb_observaciones.Location = new System.Drawing.Point(81, 188);
+            this.rtb_observaciones.Name = "rtb_observaciones";
+            this.rtb_observaciones.Size = new System.Drawing.Size(366, 64);
+            this.rtb_observaciones.TabIndex = 46;
+            this.rtb_observaciones.Text = "";
+            // 
+            // lbl_observaciones
+            // 
+            this.lbl_observaciones.AutoSize = true;
+            this.lbl_observaciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_observaciones.Location = new System.Drawing.Point(7, 192);
+            this.lbl_observaciones.Name = "lbl_observaciones";
+            this.lbl_observaciones.Size = new System.Drawing.Size(40, 18);
+            this.lbl_observaciones.TabIndex = 28;
+            this.lbl_observaciones.Text = "Obs.";
             // 
             // txt_importe
             // 
@@ -233,34 +287,21 @@
             this.lbl_importe.TabIndex = 26;
             this.lbl_importe.Text = "Importe";
             // 
-            // lbl_observaciones
+            // txt_direccion
             // 
-            this.lbl_observaciones.AutoSize = true;
-            this.lbl_observaciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_observaciones.Location = new System.Drawing.Point(7, 192);
-            this.lbl_observaciones.Name = "lbl_observaciones";
-            this.lbl_observaciones.Size = new System.Drawing.Size(40, 18);
-            this.lbl_observaciones.TabIndex = 28;
-            this.lbl_observaciones.Text = "Obs.";
+            this.txt_direccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txt_direccion.Location = new System.Drawing.Point(81, 120);
+            this.txt_direccion.Name = "txt_direccion";
+            this.txt_direccion.Size = new System.Drawing.Size(366, 26);
+            this.txt_direccion.TabIndex = 25;
             // 
-            // rtb_observaciones
+            // txt_periodo
             // 
-            this.rtb_observaciones.Location = new System.Drawing.Point(81, 188);
-            this.rtb_observaciones.Name = "rtb_observaciones";
-            this.rtb_observaciones.Size = new System.Drawing.Size(366, 64);
-            this.rtb_observaciones.TabIndex = 46;
-            this.rtb_observaciones.Text = "";
-            // 
-            // cmb_cargar_apellido
-            // 
-            this.cmb_cargar_apellido.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmb_cargar_apellido.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmb_cargar_apellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.cmb_cargar_apellido.FormattingEnabled = true;
-            this.cmb_cargar_apellido.Location = new System.Drawing.Point(81, 18);
-            this.cmb_cargar_apellido.Name = "cmb_cargar_apellido";
-            this.cmb_cargar_apellido.Size = new System.Drawing.Size(209, 32);
-            this.cmb_cargar_apellido.TabIndex = 47;
+            this.txt_periodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txt_periodo.Location = new System.Drawing.Point(81, 88);
+            this.txt_periodo.Name = "txt_periodo";
+            this.txt_periodo.Size = new System.Drawing.Size(156, 26);
+            this.txt_periodo.TabIndex = 24;
             // 
             // btn_guardar
             // 
@@ -283,46 +324,6 @@
             this.btn_cerrar.Text = "Cerrar";
             this.btn_cerrar.UseVisualStyleBackColor = true;
             this.btn_cerrar.Click += new System.EventHandler(this.btn_cerrar_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(318, 22);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 24);
-            this.label2.TabIndex = 48;
-            this.label2.Text = "Pagado: ";
-            // 
-            // chkbox_pagado
-            // 
-            this.chkbox_pagado.AutoSize = true;
-            this.chkbox_pagado.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkbox_pagado.Location = new System.Drawing.Point(430, 28);
-            this.chkbox_pagado.Name = "chkbox_pagado";
-            this.chkbox_pagado.Size = new System.Drawing.Size(15, 14);
-            this.chkbox_pagado.TabIndex = 49;
-            this.chkbox_pagado.UseVisualStyleBackColor = true;
-            // 
-            // dtp_fecha
-            // 
-            this.dtp_fecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_fecha.Location = new System.Drawing.Point(322, 90);
-            this.dtp_fecha.MinDate = new System.DateTime(1923, 1, 1, 0, 0, 0, 0);
-            this.dtp_fecha.Name = "dtp_fecha";
-            this.dtp_fecha.Size = new System.Drawing.Size(125, 26);
-            this.dtp_fecha.TabIndex = 51;
-            this.dtp_fecha.Value = new System.DateTime(2018, 3, 15, 0, 0, 0, 0);
-            // 
-            // lbl_fecha
-            // 
-            this.lbl_fecha.AutoSize = true;
-            this.lbl_fecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_fecha.Location = new System.Drawing.Point(262, 94);
-            this.lbl_fecha.Name = "lbl_fecha";
-            this.lbl_fecha.Size = new System.Drawing.Size(54, 20);
-            this.lbl_fecha.TabIndex = 50;
-            this.lbl_fecha.Text = "Fecha";
             // 
             // Crear_Pendiente
             // 
