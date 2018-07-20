@@ -19,7 +19,7 @@ namespace AdminApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Crear_Pendiente());
+            Application.Run(new MenuPrincipal());
         }
     }
 }

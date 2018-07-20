@@ -47,12 +47,13 @@
             this.cmb_cargar_apellido = new System.Windows.Forms.ComboBox();
             this.rtb_observaciones = new System.Windows.Forms.RichTextBox();
             this.lbl_observaciones = new System.Windows.Forms.Label();
-            this.txt_importe = new System.Windows.Forms.TextBox();
             this.lbl_importe = new System.Windows.Forms.Label();
             this.txt_direccion = new System.Windows.Forms.TextBox();
             this.txt_periodo = new System.Windows.Forms.TextBox();
             this.btn_guardar = new System.Windows.Forms.Button();
             this.btn_cerrar = new System.Windows.Forms.Button();
+            this.txt_importe = new System.Windows.Forms.TextBox();
+            this.lbl_error_importe = new System.Windows.Forms.Label();
             this.grpbx_BuscarPendiente.SuspendLayout();
             this.grp_pendiente.SuspendLayout();
             this.SuspendLayout();
@@ -176,6 +177,8 @@
             // 
             // grp_pendiente
             // 
+            this.grp_pendiente.Controls.Add(this.lbl_error_importe);
+            this.grp_pendiente.Controls.Add(this.txt_importe);
             this.grp_pendiente.Controls.Add(this.dtp_fecha);
             this.grp_pendiente.Controls.Add(this.lbl_fecha);
             this.grp_pendiente.Controls.Add(this.chkbox_pagado);
@@ -183,7 +186,6 @@
             this.grp_pendiente.Controls.Add(this.cmb_cargar_apellido);
             this.grp_pendiente.Controls.Add(this.rtb_observaciones);
             this.grp_pendiente.Controls.Add(this.lbl_observaciones);
-            this.grp_pendiente.Controls.Add(this.txt_importe);
             this.grp_pendiente.Controls.Add(this.lbl_importe);
             this.grp_pendiente.Controls.Add(this.txt_direccion);
             this.grp_pendiente.Controls.Add(this.txt_periodo);
@@ -269,14 +271,6 @@
             this.lbl_observaciones.TabIndex = 28;
             this.lbl_observaciones.Text = "Obs.";
             // 
-            // txt_importe
-            // 
-            this.txt_importe.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.txt_importe.Location = new System.Drawing.Point(81, 152);
-            this.txt_importe.Name = "txt_importe";
-            this.txt_importe.Size = new System.Drawing.Size(366, 26);
-            this.txt_importe.TabIndex = 27;
-            // 
             // lbl_importe
             // 
             this.lbl_importe.AutoSize = true;
@@ -325,6 +319,24 @@
             this.btn_cerrar.UseVisualStyleBackColor = true;
             this.btn_cerrar.Click += new System.EventHandler(this.btn_cerrar_Click);
             // 
+            // txt_importe
+            // 
+            this.txt_importe.Location = new System.Drawing.Point(81, 156);
+            this.txt_importe.Name = "txt_importe";
+            this.txt_importe.Size = new System.Drawing.Size(141, 26);
+            this.txt_importe.TabIndex = 52;
+            // 
+            // lbl_error_importe
+            // 
+            this.lbl_error_importe.AutoSize = true;
+            this.lbl_error_importe.ForeColor = System.Drawing.Color.Red;
+            this.lbl_error_importe.Location = new System.Drawing.Point(228, 160);
+            this.lbl_error_importe.Name = "lbl_error_importe";
+            this.lbl_error_importe.Size = new System.Drawing.Size(234, 20);
+            this.lbl_error_importe.TabIndex = 53;
+            this.lbl_error_importe.Text = "Error: Ingrese un valor numérico";
+            this.lbl_error_importe.Visible = false;
+            // 
             // Crear_Pendiente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -361,7 +373,6 @@
         private System.Windows.Forms.TextBox txt_direccion;
         private System.Windows.Forms.TextBox txt_periodo;
         private System.Windows.Forms.Label lbl_observaciones;
-        private System.Windows.Forms.TextBox txt_importe;
         private System.Windows.Forms.Label lbl_importe;
         private System.Windows.Forms.RichTextBox rtb_observaciones;
         private System.Windows.Forms.ComboBox cmb_cargar_apellido;
@@ -371,5 +382,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtp_fecha;
         private System.Windows.Forms.Label lbl_fecha;
+        private System.Windows.Forms.TextBox txt_importe;
+        private System.Windows.Forms.Label lbl_error_importe;
     }
 }

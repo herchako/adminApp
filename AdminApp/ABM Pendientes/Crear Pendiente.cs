@@ -46,9 +46,59 @@ namespace AdminApp.ABM_Pendientes
 
         private void btn_guardar_Click(object sender, EventArgs e)
         {
+            if (validar_campos()) { 
             guardarPendiente();
             MessageBox.Show("Guardado!", "Exito");
             limpiarGroupBox();
+            }
+        }
+
+        private bool validar_campos()
+        {
+            var camposObligatorios = new List<Control>();
+            camposObligatorios.Add(txt_concepto);
+            camposObligatorios.Add(txt_importe);
+
+
+            pintarCamposIncompletos(camposObligatorios);
+
+            if (camposObligatorios.All<Control>(campos => campos.Text != "") 
+                && cmb_cargar_apellido.SelectedIndex != 0
+                && es_numero(txt_importe.Text))
+                return true;
+            else
+                return false;
+        }
+
+        private bool es_numero(string text)
+        {
+            int n;
+            bool isNumeric = int.TryParse(text, out n);
+            return isNumeric;
+        }
+
+        private void pintarCamposIncompletos(List<Control> camposObligatorios)
+        {
+            var camposIncompletos = camposObligatorios.FindAll(campos => campos.Text == "");
+            camposIncompletos.ForEach(campos => campos.BackColor = Color.Red);
+            if (cmb_cargar_apellido.SelectedIndex == 0)
+            {
+                cmb_cargar_apellido.BackColor = Color.Red;
+            }
+            if (!es_numero(txt_importe.Text)) {
+                lbl_error_importe.Visible = true;
+                txt_importe.BackColor = Color.Red;
+            }
+            else {
+                lbl_error_importe.Visible = false;
+                txt_importe.BackColor = Color.White;
+            }
+            var camposCompletos = camposObligatorios.FindAll(campos => campos.Text != "");
+            camposCompletos.ForEach(campos => campos.BackColor = Color.White);
+            if (cmb_cargar_apellido.SelectedIndex != 0)
+            {
+                cmb_cargar_apellido.BackColor = Color.White;
+            }
         }
 
         private void limpiarGroupBox()
@@ -66,7 +116,7 @@ namespace AdminApp.ABM_Pendientes
             sqlCommand.CommandText = "SP_INSERTAR_PENDIENTE";
             sqlCommand.CommandType = CommandType.StoredProcedure;
             sqlCommand.Parameters.Clear();
-            sqlCommand.Parameters.AddWithValue("@id_cliente", cmb_cargar_apellido.SelectedValue);
+            sqlCommand.Parameters.AddWithValue("@id_cliente", Int32.Parse(cmb_cargar_apellido.SelectedValue.ToString()));
             sqlCommand.Parameters.AddWithValue("@concepto", txt_concepto.Text);
             sqlCommand.Parameters.AddWithValue("@periodo", txt_periodo.Text);
             sqlCommand.Parameters.AddWithValue("@fecha", dtp_fecha.Text);
