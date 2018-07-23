@@ -40,6 +40,8 @@
             this.lbl_concepto = new System.Windows.Forms.Label();
             this.lbl_direccion = new System.Windows.Forms.Label();
             this.grp_pendiente = new System.Windows.Forms.GroupBox();
+            this.lbl_error_importe = new System.Windows.Forms.Label();
+            this.txt_importe = new System.Windows.Forms.TextBox();
             this.dtp_fecha = new System.Windows.Forms.DateTimePicker();
             this.lbl_fecha = new System.Windows.Forms.Label();
             this.chkbox_pagado = new System.Windows.Forms.CheckBox();
@@ -52,8 +54,6 @@
             this.txt_periodo = new System.Windows.Forms.TextBox();
             this.btn_guardar = new System.Windows.Forms.Button();
             this.btn_cerrar = new System.Windows.Forms.Button();
-            this.txt_importe = new System.Windows.Forms.TextBox();
-            this.lbl_error_importe = new System.Windows.Forms.Label();
             this.grpbx_BuscarPendiente.SuspendLayout();
             this.grp_pendiente.SuspendLayout();
             this.SuspendLayout();
@@ -130,7 +130,7 @@
             // txt_concepto
             // 
             this.txt_concepto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.txt_concepto.Location = new System.Drawing.Point(81, 59);
+            this.txt_concepto.Location = new System.Drawing.Point(81, 69);
             this.txt_concepto.Name = "txt_concepto";
             this.txt_concepto.Size = new System.Drawing.Size(366, 26);
             this.txt_concepto.TabIndex = 13;
@@ -139,7 +139,7 @@
             // 
             this.lbl_periodo.AutoSize = true;
             this.lbl_periodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_periodo.Location = new System.Drawing.Point(6, 96);
+            this.lbl_periodo.Location = new System.Drawing.Point(6, 106);
             this.lbl_periodo.Name = "lbl_periodo";
             this.lbl_periodo.Size = new System.Drawing.Size(60, 18);
             this.lbl_periodo.TabIndex = 6;
@@ -149,7 +149,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(6, 25);
+            this.label1.Location = new System.Drawing.Point(6, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 20);
             this.label1.TabIndex = 2;
@@ -159,7 +159,7 @@
             // 
             this.lbl_concepto.AutoSize = true;
             this.lbl_concepto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_concepto.Location = new System.Drawing.Point(6, 63);
+            this.lbl_concepto.Location = new System.Drawing.Point(6, 73);
             this.lbl_concepto.Name = "lbl_concepto";
             this.lbl_concepto.Size = new System.Drawing.Size(73, 18);
             this.lbl_concepto.TabIndex = 18;
@@ -169,7 +169,7 @@
             // 
             this.lbl_direccion.AutoSize = true;
             this.lbl_direccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_direccion.Location = new System.Drawing.Point(6, 128);
+            this.lbl_direccion.Location = new System.Drawing.Point(6, 138);
             this.lbl_direccion.Name = "lbl_direccion";
             this.lbl_direccion.Size = new System.Drawing.Size(71, 18);
             this.lbl_direccion.TabIndex = 23;
@@ -194,21 +194,40 @@
             this.grp_pendiente.Controls.Add(this.label1);
             this.grp_pendiente.Controls.Add(this.lbl_periodo);
             this.grp_pendiente.Controls.Add(this.txt_concepto);
-            this.grp_pendiente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.grp_pendiente.Location = new System.Drawing.Point(8, 90);
+            this.grp_pendiente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.grp_pendiente.Location = new System.Drawing.Point(8, 103);
             this.grp_pendiente.Name = "grp_pendiente";
-            this.grp_pendiente.Size = new System.Drawing.Size(460, 268);
+            this.grp_pendiente.Size = new System.Drawing.Size(460, 286);
             this.grp_pendiente.TabIndex = 20;
             this.grp_pendiente.TabStop = false;
             this.grp_pendiente.Text = "Informacion";
             // 
+            // lbl_error_importe
+            // 
+            this.lbl_error_importe.AutoSize = true;
+            this.lbl_error_importe.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lbl_error_importe.ForeColor = System.Drawing.Color.Red;
+            this.lbl_error_importe.Location = new System.Drawing.Point(226, 168);
+            this.lbl_error_importe.Name = "lbl_error_importe";
+            this.lbl_error_importe.Size = new System.Drawing.Size(234, 20);
+            this.lbl_error_importe.TabIndex = 53;
+            this.lbl_error_importe.Text = "Error: Ingrese un valor numérico";
+            this.lbl_error_importe.Visible = false;
+            // 
+            // txt_importe
+            // 
+            this.txt_importe.Location = new System.Drawing.Point(81, 166);
+            this.txt_importe.Name = "txt_importe";
+            this.txt_importe.Size = new System.Drawing.Size(141, 29);
+            this.txt_importe.TabIndex = 52;
+            // 
             // dtp_fecha
             // 
             this.dtp_fecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_fecha.Location = new System.Drawing.Point(322, 90);
+            this.dtp_fecha.Location = new System.Drawing.Point(322, 100);
             this.dtp_fecha.MinDate = new System.DateTime(1923, 1, 1, 0, 0, 0, 0);
             this.dtp_fecha.Name = "dtp_fecha";
-            this.dtp_fecha.Size = new System.Drawing.Size(125, 26);
+            this.dtp_fecha.Size = new System.Drawing.Size(125, 29);
             this.dtp_fecha.TabIndex = 51;
             this.dtp_fecha.Value = new System.DateTime(2018, 3, 15, 0, 0, 0, 0);
             // 
@@ -216,7 +235,7 @@
             // 
             this.lbl_fecha.AutoSize = true;
             this.lbl_fecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_fecha.Location = new System.Drawing.Point(262, 94);
+            this.lbl_fecha.Location = new System.Drawing.Point(262, 104);
             this.lbl_fecha.Name = "lbl_fecha";
             this.lbl_fecha.Size = new System.Drawing.Size(54, 20);
             this.lbl_fecha.TabIndex = 50;
@@ -226,7 +245,7 @@
             // 
             this.chkbox_pagado.AutoSize = true;
             this.chkbox_pagado.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkbox_pagado.Location = new System.Drawing.Point(430, 28);
+            this.chkbox_pagado.Location = new System.Drawing.Point(414, 38);
             this.chkbox_pagado.Name = "chkbox_pagado";
             this.chkbox_pagado.Size = new System.Drawing.Size(15, 14);
             this.chkbox_pagado.TabIndex = 49;
@@ -235,10 +254,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(318, 22);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(318, 32);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 24);
+            this.label2.Size = new System.Drawing.Size(90, 22);
             this.label2.TabIndex = 48;
             this.label2.Text = "Pagado: ";
             // 
@@ -248,14 +267,14 @@
             this.cmb_cargar_apellido.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmb_cargar_apellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.cmb_cargar_apellido.FormattingEnabled = true;
-            this.cmb_cargar_apellido.Location = new System.Drawing.Point(81, 18);
+            this.cmb_cargar_apellido.Location = new System.Drawing.Point(81, 28);
             this.cmb_cargar_apellido.Name = "cmb_cargar_apellido";
             this.cmb_cargar_apellido.Size = new System.Drawing.Size(209, 32);
             this.cmb_cargar_apellido.TabIndex = 47;
             // 
             // rtb_observaciones
             // 
-            this.rtb_observaciones.Location = new System.Drawing.Point(81, 188);
+            this.rtb_observaciones.Location = new System.Drawing.Point(81, 198);
             this.rtb_observaciones.Name = "rtb_observaciones";
             this.rtb_observaciones.Size = new System.Drawing.Size(366, 64);
             this.rtb_observaciones.TabIndex = 46;
@@ -265,7 +284,7 @@
             // 
             this.lbl_observaciones.AutoSize = true;
             this.lbl_observaciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_observaciones.Location = new System.Drawing.Point(7, 192);
+            this.lbl_observaciones.Location = new System.Drawing.Point(7, 202);
             this.lbl_observaciones.Name = "lbl_observaciones";
             this.lbl_observaciones.Size = new System.Drawing.Size(40, 18);
             this.lbl_observaciones.TabIndex = 28;
@@ -275,7 +294,7 @@
             // 
             this.lbl_importe.AutoSize = true;
             this.lbl_importe.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_importe.Location = new System.Drawing.Point(6, 160);
+            this.lbl_importe.Location = new System.Drawing.Point(6, 170);
             this.lbl_importe.Name = "lbl_importe";
             this.lbl_importe.Size = new System.Drawing.Size(58, 18);
             this.lbl_importe.TabIndex = 26;
@@ -284,7 +303,7 @@
             // txt_direccion
             // 
             this.txt_direccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.txt_direccion.Location = new System.Drawing.Point(81, 120);
+            this.txt_direccion.Location = new System.Drawing.Point(81, 130);
             this.txt_direccion.Name = "txt_direccion";
             this.txt_direccion.Size = new System.Drawing.Size(366, 26);
             this.txt_direccion.TabIndex = 25;
@@ -292,7 +311,7 @@
             // txt_periodo
             // 
             this.txt_periodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.txt_periodo.Location = new System.Drawing.Point(81, 88);
+            this.txt_periodo.Location = new System.Drawing.Point(81, 98);
             this.txt_periodo.Name = "txt_periodo";
             this.txt_periodo.Size = new System.Drawing.Size(156, 26);
             this.txt_periodo.TabIndex = 24;
@@ -300,7 +319,7 @@
             // btn_guardar
             // 
             this.btn_guardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.btn_guardar.Location = new System.Drawing.Point(270, 373);
+            this.btn_guardar.Location = new System.Drawing.Point(270, 395);
             this.btn_guardar.Name = "btn_guardar";
             this.btn_guardar.Size = new System.Drawing.Size(96, 34);
             this.btn_guardar.TabIndex = 22;
@@ -311,7 +330,7 @@
             // btn_cerrar
             // 
             this.btn_cerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cerrar.Location = new System.Drawing.Point(372, 373);
+            this.btn_cerrar.Location = new System.Drawing.Point(372, 395);
             this.btn_cerrar.Name = "btn_cerrar";
             this.btn_cerrar.Size = new System.Drawing.Size(96, 34);
             this.btn_cerrar.TabIndex = 21;
@@ -319,29 +338,11 @@
             this.btn_cerrar.UseVisualStyleBackColor = true;
             this.btn_cerrar.Click += new System.EventHandler(this.btn_cerrar_Click);
             // 
-            // txt_importe
-            // 
-            this.txt_importe.Location = new System.Drawing.Point(81, 156);
-            this.txt_importe.Name = "txt_importe";
-            this.txt_importe.Size = new System.Drawing.Size(141, 26);
-            this.txt_importe.TabIndex = 52;
-            // 
-            // lbl_error_importe
-            // 
-            this.lbl_error_importe.AutoSize = true;
-            this.lbl_error_importe.ForeColor = System.Drawing.Color.Red;
-            this.lbl_error_importe.Location = new System.Drawing.Point(228, 160);
-            this.lbl_error_importe.Name = "lbl_error_importe";
-            this.lbl_error_importe.Size = new System.Drawing.Size(234, 20);
-            this.lbl_error_importe.TabIndex = 53;
-            this.lbl_error_importe.Text = "Error: Ingrese un valor numérico";
-            this.lbl_error_importe.Visible = false;
-            // 
             // Crear_Pendiente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(480, 419);
+            this.ClientSize = new System.Drawing.Size(480, 446);
             this.Controls.Add(this.btn_guardar);
             this.Controls.Add(this.btn_cerrar);
             this.Controls.Add(this.grp_pendiente);

@@ -46,10 +46,11 @@ namespace AdminApp.ABM_Pendientes
 
         private void btn_guardar_Click(object sender, EventArgs e)
         {
-            if (validar_campos()) { 
-            guardarPendiente();
-            MessageBox.Show("Guardado!", "Exito");
-            limpiarGroupBox();
+            if (validar_campos())
+            {
+                guardarPendiente();
+                MessageBox.Show("Guardado!", "Exito");
+                limpiarGroupBox();
             }
         }
 
@@ -62,7 +63,7 @@ namespace AdminApp.ABM_Pendientes
 
             pintarCamposIncompletos(camposObligatorios);
 
-            if (camposObligatorios.All<Control>(campos => campos.Text != "") 
+            if (camposObligatorios.All<Control>(campos => campos.Text != "")
                 && cmb_cargar_apellido.SelectedIndex != 0
                 && es_numero(txt_importe.Text))
                 return true;
@@ -72,8 +73,8 @@ namespace AdminApp.ABM_Pendientes
 
         private bool es_numero(string text)
         {
-            int n;
-            bool isNumeric = int.TryParse(text, out n);
+            float n;
+            bool isNumeric = float.TryParse(text, out n);
             return isNumeric;
         }
 
@@ -85,11 +86,13 @@ namespace AdminApp.ABM_Pendientes
             {
                 cmb_cargar_apellido.BackColor = Color.Red;
             }
-            if (!es_numero(txt_importe.Text)) {
+            if (!es_numero(txt_importe.Text))
+            {
                 lbl_error_importe.Visible = true;
                 txt_importe.BackColor = Color.Red;
             }
-            else {
+            else
+            {
                 lbl_error_importe.Visible = false;
                 txt_importe.BackColor = Color.White;
             }
@@ -133,5 +136,5 @@ namespace AdminApp.ABM_Pendientes
             pendientes_cliente.Show();
         }
     }
-    }
+}
 
