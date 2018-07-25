@@ -185,6 +185,10 @@
   <ItemGroup>
     <None Include="Resources\if_line-chart_1608449.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\localidades.sql" />
+    <Content Include="Resources\script_creacion_inicial.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

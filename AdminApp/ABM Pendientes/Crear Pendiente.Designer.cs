@@ -200,7 +200,7 @@
             this.grp_pendiente.Size = new System.Drawing.Size(460, 286);
             this.grp_pendiente.TabIndex = 20;
             this.grp_pendiente.TabStop = false;
-            this.grp_pendiente.Text = "Informacion";
+            this.grp_pendiente.Text = "Ingresar Nuevo Pendiente";
             // 
             // lbl_error_importe
             // 
