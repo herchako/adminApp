@@ -61,7 +61,7 @@ namespace AdminApp.ABM_Pendientes
             if (chk_box_mostrar_todos.Checked == true)
                 sqlCommand.Parameters.AddWithValue("@pagado", null);
             else
-                sqlCommand.Parameters.AddWithValue("@pagado", true);
+                sqlCommand.Parameters.AddWithValue("@pagado", false);
             DataTable dt_pendientes = baseDeDatos.consulta_parametrizada(sqlCommand);
             sqlCommand.Parameters.Clear();
 

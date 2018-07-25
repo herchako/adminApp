@@ -106,6 +106,7 @@ namespace AdminApp.ABM_Pendientes
             this.btn_buscar.TabIndex = 2;
             this.btn_buscar.Text = " ";
             this.btn_buscar.UseVisualStyleBackColor = true;
+            this.btn_buscar.Click += new System.EventHandler(this.btn_buscar_Click);
             // 
             // lbl_buscar_apellido
             // 
@@ -231,7 +232,7 @@ namespace AdminApp.ABM_Pendientes
             this.dtp_fecha.Name = "dtp_fecha";
             this.dtp_fecha.Size = new System.Drawing.Size(125, 29);
             this.dtp_fecha.TabIndex = 51;
-            this.dtp_fecha.Value = DateTime.Now;
+            this.dtp_fecha.Value = new System.DateTime(2018, 7, 25, 15, 32, 22, 57);
             // 
             // lbl_fecha
             // 

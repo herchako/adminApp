@@ -135,6 +135,11 @@ namespace AdminApp.ABM_Pendientes
             Pendientes_Cliente pendientes_cliente = new Pendientes_Cliente(Int32.Parse(cmb_buscar_apellido.SelectedValue.ToString()));
             pendientes_cliente.Show();
         }
+
+        private void btn_buscar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
