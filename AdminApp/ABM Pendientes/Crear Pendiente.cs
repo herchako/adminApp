@@ -138,7 +138,52 @@ namespace AdminApp.ABM_Pendientes
 
         private void btn_buscar_Click(object sender, EventArgs e)
         {
+            try
+            {
 
+                int cod_pendiente = string.IsNullOrEmpty(txt_buscar_cod.Text) ? -1 : int.Parse(txt_buscar_cod.Text);
+                buscarPendiente(cod_pendiente);
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("El #ID debe ser un número " + Environment.NewLine + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
+        }
+
+        private void buscarPendiente(object cod_pendiente)
+        {
+            DataSet ds = new DataSet();
+            BaseDeDatos baseDeDatos = BaseDeDatos.Instance;
+            SqlCommand sqlCommand = new SqlCommand();
+            sqlCommand.Parameters.Clear();
+            sqlCommand.CommandType = CommandType.StoredProcedure;
+            sqlCommand.CommandText = "SP_TRAER_PENDIENTE_POR_CODIGO";
+            sqlCommand.Parameters.AddWithValue("@cod_pendiente", cod_pendiente);
+            DataTable dt_pendiente = baseDeDatos.consulta_parametrizada(sqlCommand);
+            if ((dt_pendiente != null) && (dt_pendiente.Rows.Count != 0))
+            {
+                llenarDatosPendiente(dt_pendiente);
+            }
+            else
+            {
+                MessageBox.Show("Cliente inexistente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            sqlCommand.Parameters.Clear();
+        }
+
+        private void llenarDatosPendiente(DataTable dt_pendiente)
+        {
+            //revisar esto
+            txt_concepto.Text = dt_pendiente.Rows[0][0].ToString();
+            txt_direccion.Text = dt_pendiente.Rows[0][1].ToString();
+            txt_importe.Text= dt_pendiente.Rows[0][2].ToString();
+            txt_periodo.Text = dt_pendiente.Rows[0][3].ToString();
+            txt_periodo.Text = dt_pendiente.Rows[0][3].ToString();
+            cmb_cargar_apellido.SelectedValue= dt_pendiente.Rows[0][4].ToString();
+            txt_periodo.Text = dt_pendiente.Rows[0][5].ToString();
+            rtb_observaciones.Text = dt_pendiente.Rows[0][6].ToString();
         }
     }
 }
