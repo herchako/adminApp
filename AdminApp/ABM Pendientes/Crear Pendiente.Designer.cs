@@ -1,4 +1,6 @@
-﻿namespace AdminApp.ABM_Pendientes
+﻿using System;
+
+namespace AdminApp.ABM_Pendientes
 {
     partial class Crear_Pendiente
     {
@@ -229,7 +231,7 @@
             this.dtp_fecha.Name = "dtp_fecha";
             this.dtp_fecha.Size = new System.Drawing.Size(125, 29);
             this.dtp_fecha.TabIndex = 51;
-            this.dtp_fecha.Value = new System.DateTime(2018, 3, 15, 0, 0, 0, 0);
+            this.dtp_fecha.Value = DateTime.Now;
             // 
             // lbl_fecha
             // 
