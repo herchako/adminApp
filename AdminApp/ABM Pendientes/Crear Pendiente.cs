@@ -175,15 +175,14 @@ namespace AdminApp.ABM_Pendientes
 
         private void llenarDatosPendiente(DataTable dt_pendiente)
         {
-            //revisar esto
-            txt_concepto.Text = dt_pendiente.Rows[0][0].ToString();
-            txt_direccion.Text = dt_pendiente.Rows[0][1].ToString();
-            txt_importe.Text= dt_pendiente.Rows[0][2].ToString();
-            txt_periodo.Text = dt_pendiente.Rows[0][3].ToString();
-            txt_periodo.Text = dt_pendiente.Rows[0][3].ToString();
-            cmb_cargar_apellido.SelectedValue= dt_pendiente.Rows[0][4].ToString();
+            cmb_cargar_apellido.SelectedValue = dt_pendiente.Rows[0][0].ToString();
+            txt_concepto.Text = dt_pendiente.Rows[0][4].ToString();
             txt_periodo.Text = dt_pendiente.Rows[0][5].ToString();
-            rtb_observaciones.Text = dt_pendiente.Rows[0][6].ToString();
+            dtp_fecha.Text = dt_pendiente.Rows[0][6].ToString();
+            txt_direccion.Text = dt_pendiente.Rows[0][7].ToString();
+            txt_importe.Text = dt_pendiente.Rows[0][8].ToString();
+            chkbox_pagado.Checked = bool.Parse(dt_pendiente.Rows[0][9].ToString());
+            rtb_observaciones.Text = dt_pendiente.Rows[0][10].ToString();
         }
     }
 }
