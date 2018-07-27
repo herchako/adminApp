@@ -96,5 +96,7 @@ namespace AdminApp.ABM_Pendientes
             MessageBox.Show("Guardado!", "Exito");
             this.Close();
         }
+
+
     }
 }

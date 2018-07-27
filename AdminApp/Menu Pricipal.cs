@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using AdminApp.ABM_Cliente;
 using AdminApp.ABM_Pendientes;
+using AdminApp.ABM_Inmuebles;
 
 namespace AdminApp
 {
@@ -37,7 +38,11 @@ namespace AdminApp
             crear_pendiente.Show();
         }
 
-
+        private void btn_inmuebles_Click(object sender, EventArgs e)
+        {
+            Crear_Inmueble crear_inmueble = new Crear_Inmueble();
+            crear_inmueble.Show();
+        }
     }
     
 }

@@ -28,10 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.btn_inmuebles = new System.Windows.Forms.Button();
             this.btn_crearCliente = new System.Windows.Forms.Button();
             this.btn_pendientes = new System.Windows.Forms.Button();
             this.btn_buscarEditarCliente = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // btn_inmuebles
+            // 
+            this.btn_inmuebles.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btn_inmuebles.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_inmuebles.Image = global::AdminApp.Properties.Resources.if_user_profile_edit_103781;
+            this.btn_inmuebles.Location = new System.Drawing.Point(22, 128);
+            this.btn_inmuebles.Name = "btn_inmuebles";
+            this.btn_inmuebles.Size = new System.Drawing.Size(84, 110);
+            this.btn_inmuebles.TabIndex = 3;
+            this.btn_inmuebles.Text = "Inmuebles";
+            this.btn_inmuebles.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_inmuebles.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btn_inmuebles.UseVisualStyleBackColor = true;
+            this.btn_inmuebles.Click += new System.EventHandler(this.btn_inmuebles_Click);
             // 
             // btn_crearCliente
             // 
@@ -81,7 +97,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(309, 353);
+            this.Controls.Add(this.btn_inmuebles);
             this.Controls.Add(this.btn_crearCliente);
             this.Controls.Add(this.btn_pendientes);
             this.Controls.Add(this.btn_buscarEditarCliente);
@@ -96,5 +114,6 @@
         private System.Windows.Forms.Button btn_buscarEditarCliente;
         private System.Windows.Forms.Button btn_pendientes;
         private System.Windows.Forms.Button btn_crearCliente;
+        private System.Windows.Forms.Button btn_inmuebles;
     }
 }
