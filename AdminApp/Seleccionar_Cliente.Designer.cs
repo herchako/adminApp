@@ -75,6 +75,7 @@
             this.dtgv_lista_clientes.ReadOnly = true;
             this.dtgv_lista_clientes.Size = new System.Drawing.Size(347, 208);
             this.dtgv_lista_clientes.TabIndex = 3;
+            this.dtgv_lista_clientes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgv_lista_clientes_CellDoubleClick);
             // 
             // Seleccionar_Cliente
             // 

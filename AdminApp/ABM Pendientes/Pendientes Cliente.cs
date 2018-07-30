@@ -17,7 +17,7 @@ namespace AdminApp.ABM_Pendientes
         public static Int32 id_cliente;
         public Pendientes_Cliente(int id_cliente_seleccionado)
         {
-            id_cliente = id_cliente_seleccionado; 
+            id_cliente = id_cliente_seleccionado;
             InitializeComponent();
         }
 
@@ -46,7 +46,7 @@ namespace AdminApp.ABM_Pendientes
             sqlCommand.Parameters.Clear();
 
             return dt_pendientes;
-         }
+        }
 
         private object TraerListaPendientes()
         {

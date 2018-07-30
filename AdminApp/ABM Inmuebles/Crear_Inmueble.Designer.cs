@@ -67,6 +67,8 @@
             this.label15 = new System.Windows.Forms.Label();
             this.btn_guardar = new System.Windows.Forms.Button();
             this.btn_cerrar = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.grp_box_propietarios.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -75,6 +77,8 @@
             // 
             // grp_box_propietarios
             // 
+            this.grp_box_propietarios.Controls.Add(this.button2);
+            this.grp_box_propietarios.Controls.Add(this.button1);
             this.grp_box_propietarios.Controls.Add(this.btn_buscar_2);
             this.grp_box_propietarios.Controls.Add(this.btn_buscar_1);
             this.grp_box_propietarios.Controls.Add(this.txt_propietario2);
@@ -97,6 +101,7 @@
             this.btn_buscar_2.TabIndex = 5;
             this.btn_buscar_2.Text = "Buscar";
             this.btn_buscar_2.UseVisualStyleBackColor = true;
+            this.btn_buscar_2.Click += new System.EventHandler(this.btn_buscar_2_Click);
             // 
             // btn_buscar_1
             // 
@@ -434,6 +439,26 @@
             this.btn_cerrar.Text = "Cerrar";
             this.btn_cerrar.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(413, 21);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(25, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "X";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(413, 54);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(25, 23);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "X";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Crear_Inmueble
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -502,5 +527,7 @@
         private System.Windows.Forms.Button btn_cerrar;
         private System.Windows.Forms.Button btn_buscar_2;
         private System.Windows.Forms.Button btn_buscar_1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
     }
 }

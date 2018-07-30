@@ -13,7 +13,7 @@ namespace AdminApp
 {
     public partial class Seleccionar_Cliente : Form
     {
-        
+
 
         DataTable dt_lista_clientes = new DataTable();
         public Seleccionar_Cliente()
@@ -22,12 +22,23 @@ namespace AdminApp
         }
 
         public string cliente_seleccionado { get; private set; }
+        public object id_cliente_seleccionado { get; private set; }
 
         private void Seleccionar_Persona_Load(object sender, EventArgs e)
         {
-            this.cliente_seleccionado = "Something";
-            //this.DialogResult = DialogResult.OK;
+
             dtgv_lista_clientes.DataSource = TraerListaClientes();
+            this.dtgv_lista_clientes.Columns["ID_CLIENTE"].Visible = false;
+
+
+            //Estilo
+            this.dtgv_lista_clientes.RowsDefaultCellStyle.BackColor = Color.White;
+            this.dtgv_lista_clientes.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+            this.dtgv_lista_clientes.ColumnHeadersDefaultCellStyle.BackColor = Color.LightBlue;
+            this.dtgv_lista_clientes.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 12);
+            this.dtgv_lista_clientes.EnableHeadersVisualStyles = false;
+            this.dtgv_lista_clientes.Font = new Font("Arial", 11);
+
         }
 
         private object TraerListaClientes()
@@ -57,7 +68,17 @@ namespace AdminApp
 
         private void txt_buscar_cliente_TextChanged(object sender, EventArgs e)
         {
-            (dtgv_lista_clientes.DataSource as DataTable).DefaultView.RowFilter = string.Format("APELLIDO = '{3}'", txt_buscar_cliente.Text);
+            (dtgv_lista_clientes.DataSource as DataTable).DefaultView.RowFilter = string.Format("APELLIDO LIKE '%{0}%'", txt_buscar_cliente.Text);
         }
+
+        private void dtgv_lista_clientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.cliente_seleccionado = dtgv_lista_clientes.Rows[e.RowIndex].Cells[2].Value.ToString();
+            this.id_cliente_seleccionado = dtgv_lista_clientes.Rows[e.RowIndex].Cells[1].Value;
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+
     }
 }

@@ -108,6 +108,7 @@
     <Compile Include="ABM Cliente\Crear Cliente.Designer.cs">
       <DependentUpon>Crear Cliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cliente.cs" />
     <Compile Include="Menu Pricipal.cs">
       <SubType>Form</SubType>
     </Compile>
