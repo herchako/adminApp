@@ -30,7 +30,6 @@ namespace AdminApp
             dtgv_lista_clientes.DataSource = TraerListaClientes();
             this.dtgv_lista_clientes.Columns["ID_CLIENTE"].Visible = false;
 
-
             //Estilo
             this.dtgv_lista_clientes.RowsDefaultCellStyle.BackColor = Color.White;
             this.dtgv_lista_clientes.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
@@ -38,6 +37,10 @@ namespace AdminApp
             this.dtgv_lista_clientes.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 12);
             this.dtgv_lista_clientes.EnableHeadersVisualStyles = false;
             this.dtgv_lista_clientes.Font = new Font("Arial", 11);
+            
+            this.dtgv_lista_clientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgv_lista_clientes.Columns[1].Width = 90;
+
 
         }
 
@@ -74,7 +77,7 @@ namespace AdminApp
         private void dtgv_lista_clientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             this.cliente_seleccionado = dtgv_lista_clientes.Rows[e.RowIndex].Cells[2].Value.ToString();
-            this.id_cliente_seleccionado = dtgv_lista_clientes.Rows[e.RowIndex].Cells[1].Value;
+            this.id_cliente_seleccionado = dtgv_lista_clientes.Rows[e.RowIndex].Cells[0].Value;
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.grp_box_propietarios = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.btn_buscar_2 = new System.Windows.Forms.Button();
             this.btn_buscar_1 = new System.Windows.Forms.Button();
             this.txt_propietario2 = new System.Windows.Forms.TextBox();
@@ -67,8 +69,8 @@
             this.label15 = new System.Windows.Forms.Label();
             this.btn_guardar = new System.Windows.Forms.Button();
             this.btn_cerrar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.txt_dept = new System.Windows.Forms.TextBox();
+            this.lbl_dept = new System.Windows.Forms.Label();
             this.grp_box_propietarios.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -92,6 +94,26 @@
             this.grp_box_propietarios.TabIndex = 0;
             this.grp_box_propietarios.TabStop = false;
             this.grp_box_propietarios.Text = "Propietarios";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(413, 54);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(25, 23);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "X";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(413, 21);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(25, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "X";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btn_buscar_2
             // 
@@ -117,6 +139,7 @@
             // 
             this.txt_propietario2.Location = new System.Drawing.Point(114, 54);
             this.txt_propietario2.Name = "txt_propietario2";
+            this.txt_propietario2.ReadOnly = true;
             this.txt_propietario2.Size = new System.Drawing.Size(233, 23);
             this.txt_propietario2.TabIndex = 3;
             // 
@@ -124,6 +147,7 @@
             // 
             this.txt_propietario1.Location = new System.Drawing.Point(114, 22);
             this.txt_propietario1.Name = "txt_propietario1";
+            this.txt_propietario1.ReadOnly = true;
             this.txt_propietario1.Size = new System.Drawing.Size(233, 23);
             this.txt_propietario1.TabIndex = 2;
             // 
@@ -147,6 +171,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txt_dept);
+            this.groupBox2.Controls.Add(this.lbl_dept);
             this.groupBox2.Controls.Add(this.txt_obs);
             this.groupBox2.Controls.Add(this.txt_cp);
             this.groupBox2.Controls.Add(this.txt_piso);
@@ -171,9 +197,9 @@
             // 
             // txt_obs
             // 
-            this.txt_obs.Location = new System.Drawing.Point(334, 82);
+            this.txt_obs.Location = new System.Drawing.Point(329, 81);
             this.txt_obs.Name = "txt_obs";
-            this.txt_obs.Size = new System.Drawing.Size(168, 23);
+            this.txt_obs.Size = new System.Drawing.Size(173, 23);
             this.txt_obs.TabIndex = 14;
             // 
             // txt_cp
@@ -185,16 +211,16 @@
             // 
             // txt_piso
             // 
-            this.txt_piso.Location = new System.Drawing.Point(457, 52);
+            this.txt_piso.Location = new System.Drawing.Point(400, 51);
             this.txt_piso.Name = "txt_piso";
-            this.txt_piso.Size = new System.Drawing.Size(45, 23);
+            this.txt_piso.Size = new System.Drawing.Size(30, 23);
             this.txt_piso.TabIndex = 12;
             // 
             // txt_nro
             // 
-            this.txt_nro.Location = new System.Drawing.Point(334, 52);
+            this.txt_nro.Location = new System.Drawing.Point(329, 51);
             this.txt_nro.Name = "txt_nro";
-            this.txt_nro.Size = new System.Drawing.Size(51, 23);
+            this.txt_nro.Size = new System.Drawing.Size(32, 23);
             this.txt_nro.TabIndex = 11;
             // 
             // txt_calle
@@ -206,22 +232,22 @@
             // 
             // txt_localidad
             // 
-            this.txt_localidad.Location = new System.Drawing.Point(372, 20);
+            this.txt_localidad.Location = new System.Drawing.Point(367, 19);
             this.txt_localidad.Name = "txt_localidad";
-            this.txt_localidad.Size = new System.Drawing.Size(130, 23);
+            this.txt_localidad.Size = new System.Drawing.Size(135, 23);
             this.txt_localidad.TabIndex = 9;
             // 
             // txt_tipo_inmueble
             // 
             this.txt_tipo_inmueble.Location = new System.Drawing.Point(114, 20);
             this.txt_tipo_inmueble.Name = "txt_tipo_inmueble";
-            this.txt_tipo_inmueble.Size = new System.Drawing.Size(173, 23);
+            this.txt_tipo_inmueble.Size = new System.Drawing.Size(156, 23);
             this.txt_tipo_inmueble.TabIndex = 4;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(412, 55);
+            this.label9.Location = new System.Drawing.Point(364, 54);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(39, 17);
             this.label9.TabIndex = 8;
@@ -230,7 +256,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(293, 23);
+            this.label6.Location = new System.Drawing.Point(288, 22);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(73, 17);
             this.label6.TabIndex = 7;
@@ -239,7 +265,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(293, 55);
+            this.label7.Location = new System.Drawing.Point(288, 54);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(35, 17);
             this.label7.TabIndex = 6;
@@ -248,7 +274,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(293, 85);
+            this.label8.Location = new System.Drawing.Point(288, 84);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(38, 17);
             this.label8.TabIndex = 5;
@@ -439,25 +465,21 @@
             this.btn_cerrar.Text = "Cerrar";
             this.btn_cerrar.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // txt_dept
             // 
-            this.button1.Location = new System.Drawing.Point(413, 21);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(25, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "X";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.txt_dept.Location = new System.Drawing.Point(477, 51);
+            this.txt_dept.Name = "txt_dept";
+            this.txt_dept.Size = new System.Drawing.Size(25, 23);
+            this.txt_dept.TabIndex = 16;
             // 
-            // button2
+            // lbl_dept
             // 
-            this.button2.Location = new System.Drawing.Point(413, 54);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(25, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "X";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.lbl_dept.AutoSize = true;
+            this.lbl_dept.Location = new System.Drawing.Point(436, 54);
+            this.lbl_dept.Name = "lbl_dept";
+            this.lbl_dept.Size = new System.Drawing.Size(42, 17);
+            this.lbl_dept.TabIndex = 15;
+            this.lbl_dept.Text = "Dept:";
             // 
             // Crear_Inmueble
             // 
@@ -529,5 +551,7 @@
         private System.Windows.Forms.Button btn_buscar_1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txt_dept;
+        private System.Windows.Forms.Label lbl_dept;
     }
 }

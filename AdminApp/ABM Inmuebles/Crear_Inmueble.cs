@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -27,7 +28,67 @@ namespace AdminApp.ABM_Inmuebles
 
         private void btn_guardar_Click(object sender, EventArgs e)
         {
+            if (validar_campos())
+            {
+                guardarPendiente();
+                MessageBox.Show("Guardado!", "Exito");
+                //limpiarGroupBox();
+            }
+        }
 
+        private void guardarPendiente()
+        {
+            BaseDeDatos baseDeDatos = BaseDeDatos.Instance;
+            SqlCommand sqlCommand = new SqlCommand();
+            sqlCommand.CommandText = "SP_INSERTAR_INMUEBLE";
+            sqlCommand.CommandType = CommandType.StoredProcedure;
+            sqlCommand.Parameters.Clear();
+            sqlCommand.Parameters.AddWithValue("@id_cliente_1", cliente1.id);
+            if (txt_propietario2.Text != "")
+                sqlCommand.Parameters.AddWithValue("@id_cliente_2", cliente2.id);
+            sqlCommand.Parameters.AddWithValue("@tipo", txt_tipo_inmueble.Text);
+            sqlCommand.Parameters.AddWithValue("@calle", txt_calle.Text);
+            sqlCommand.Parameters.AddWithValue("@altura", txt_nro.Text);
+            sqlCommand.Parameters.AddWithValue("@piso", txt_piso.Text);
+            sqlCommand.Parameters.AddWithValue("@dpto", txt_dept.Text);
+            sqlCommand.Parameters.AddWithValue("@localidad", txt_localidad.Text);
+            sqlCommand.Parameters.AddWithValue("@codigo_postal", txt_cp.Text);
+            sqlCommand.Parameters.AddWithValue("@observaciones", txt_obs.Text);
+            sqlCommand.Parameters.AddWithValue("@administracion_nombre", txt_admin_nombre.Text);
+            sqlCommand.Parameters.AddWithValue("@administracion_telefono", txt_admin_telefono.Text);
+            sqlCommand.Parameters.AddWithValue("@administracion_obs", txt_admin_obs.Text);
+            sqlCommand.Parameters.AddWithValue("@encargado_nombre", txt_enc_nombre.Text);
+            sqlCommand.Parameters.AddWithValue("@encargado_telefono", txt_enc_telefono.Text);
+            sqlCommand.Parameters.AddWithValue("@encargado_obs", txt_enc_obs.Text);
+
+
+            baseDeDatos.ejecuta(sqlCommand);
+        }
+
+        private bool validar_campos()
+        {
+            var camposObligatorios = new List<Control>();
+            camposObligatorios.Add(txt_propietario1);
+            camposObligatorios.Add(txt_tipo_inmueble);
+            camposObligatorios.Add(txt_localidad);
+            camposObligatorios.Add(txt_calle);
+            camposObligatorios.Add(txt_nro);
+
+
+            pintarCamposIncompletos(camposObligatorios);
+
+            if (camposObligatorios.All<Control>(campos => campos.Text != ""))
+                return true;
+            else
+                return false;
+        }
+
+        private void pintarCamposIncompletos(List<Control> camposObligatorios)
+        {
+            var camposIncompletos = camposObligatorios.FindAll(campos => campos.Text == "");
+            camposIncompletos.ForEach(campos => campos.BackColor = Color.Red);
+            var camposCompletos = camposObligatorios.FindAll(campos => campos.Text != "");
+            camposCompletos.ForEach(campos => campos.BackColor = Color.White);
         }
 
         private void btn_buscar_1_Click(object sender, EventArgs e)
@@ -54,13 +115,9 @@ namespace AdminApp.ABM_Inmuebles
                     cliente.nombre = seleccionar_Persona.cliente_seleccionado.ToString();
                 }
 
-
-
             }
             return cliente;
         }
-
-
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -71,7 +128,7 @@ namespace AdminApp.ABM_Inmuebles
         private void button1_Click(object sender, EventArgs e)
         {
             cliente1 = new Cliente();
-            txt_propietario2.Text = "";
+            txt_propietario1.Text = "";
         }
     }
 }

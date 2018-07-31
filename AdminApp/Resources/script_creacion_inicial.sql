@@ -90,6 +90,7 @@ GO
 
 
 CREATE PROCEDURE [SP_INSERTAR_CLIENTE]
+		
 		@nombre NVARCHAR(255) = null,
 		@apellido NVARCHAR(255) = null,
 		@email NVARCHAR(255) = null,
@@ -115,6 +116,39 @@ CREATE PROCEDURE [SP_INSERTAR_CLIENTE]
 		SET @cod_cliente= (SELECT COUNT(*) FROM dbo.CLIENTES)
 		INSERT INTO dbo.CLIENTES(COD_CLIENTE, NOMBRE, APELLIDO, EMAIL, TELEFONO, CELULAR, OTRO_TEL, ID_TIPO_CLIENTE, ID_TIPO_CUIL_CUIT, DNI, FECHA_NACIMIENTO, DOMICILIO_CALLE,DOMICILIO_ALTURA,DOMICILIO_PISO,DOMICILIO_DPTO,DOMICILIO_PROVINCIA,DOMICILIO_PARTIDO,DOMICILIO_LOCALIDAD,OBSERVACIONES)
 		VALUES(@cod_cliente,@nombre,@apellido, @email,@telefono,@celular,@otro_tel, @id_tipo_cliente, @id_tipo_cuil_cuit,@dni,@fecha_nacimiento,@domicilio_calle,@domicilio_altura,@domicilio_piso,@domicilio_dpto,@domicilio_provincia,@domicilio_partido,@domicilio_localidad, @observaciones   )
+		END
+GO
+
+CREATE PROCEDURE [SP_INSERTAR_INMUEBLE]
+		@id_cliente_1 NUMERIC(18,0) =1,
+		@id_cliente_2 NUMERIC(18,0) =-1,
+		@tipo NVARCHAR(255) = null,
+		@calle NVARCHAR(255) = null,
+		@altura NVARCHAR(255) = null,
+		@piso NVARCHAR(255) = null,
+		@dpto NVARCHAR(255) = null,
+		@localidad NVARCHAR(255) = null,
+		@observaciones NVARCHAR(255) null,
+		@codigo_postal NVARCHAR(255) = null,
+		@administracion_nombre NVARCHAR(255) = null,
+		@administracion_telefono NVARCHAR(255) = null,
+		@administracion_obs NVARCHAR(255) = null,
+		@encargado_nombre NVARCHAR(255) = null,
+		@encargado_telefono NVARCHAR(255) = null,
+		@encargado_obs NVARCHAR(255) = null
+		AS
+		BEGIN
+		SET NOCOUNT ON;
+		DECLARE	@id_inmueble numeric(18,0)
+		INSERT INTO dbo.INMUEBLES(TIPO, CALLE, ALTURA, PISO, DPTO, LOCALIDAD, OBSERVACIONES, CODIGO_POSTAL, ADMINISTRACION_NOMBRE, ADMINISTRACION_TELEFONO, ADMINISTRACION_OBS, ENCARGADO_NOMBRE, ENCARGADO_TELEFONO, ENCARGADO_OBS)
+		VALUES(@tipo, @calle, @altura, @piso, @dpto, @localidad, @observaciones, @codigo_postal, @administracion_nombre, @administracion_telefono, @administracion_obs, @encargado_nombre, @encargado_telefono, @encargado_obs)
+		SET @id_inmueble = SCOPE_IDENTITY();
+		INSERT INTO dbo.PROPIETARIO_POR_INMUEBLE(ID_INMUEBLE,ID_PROPIETARIO)
+		VALUES (@id_inmueble,@id_cliente_1)
+		IF @id_cliente_2 != -1
+        INSERT INTO dbo.PROPIETARIO_POR_INMUEBLE(ID_INMUEBLE,ID_PROPIETARIO)
+		VALUES (@id_inmueble,@id_cliente_2)
+		
 		END
 GO
 
@@ -415,9 +449,15 @@ GO
 DROP PROCEDURE [SP_TRAER_PENDIENTES_CODIGO]
 GO
 DROP PROCEDURE [SP_ACTUALIZAR_PENDIENTE_POR_ID_PENDIENTE]
-
+go
+DROP PROCEDURE [SP_INSERTAR_INMUEBLE]
 */
- DROP TABLE [dbo].[INMUEBLE]
+
+
+
+
+
+ DROP TABLE [dbo].[PROPIETARIO_POR_INMUEBLE]
  exec [SP_TRAER_CLIENTE_POR_ID] 1
   exec SP_TRAER_PROVINCIAS
 
@@ -441,7 +481,7 @@ WHERE CustomerID = 1;
 
 
 USE master
-SELECT * FROM DBO.CLIENTES
+SELECT * FROM DBO.INMUEBLES
 drop table TIPO_CLIENTES
 
 DELETE FROM DBO.CLIENTES
@@ -450,5 +490,14 @@ WHERE ID_CLIENTE=1
 select * from PENDIENTES
 
 EXECUTE SP_TRAER_PENDIENTE_POR_CODIGO 4
-select * FROM CLIENTES
+
+select INMUEBLES.TIPO, PROPIETARIO_POR_INMUEBLE.ID_PROPIETARIO_POR_INMUEBLE,CLIENTES.NOMBRE, CLIENTES.APELLIDO, CLIENTES.ID_CLIENTE FROM INMUEBLES
+inner join PROPIETARIO_POR_INMUEBLE on PROPIETARIO_POR_INMUEBLE.ID_INMUEBLE = INMUEBLES.ID_INMUEBLE
+inner join CLIENTES on PROPIETARIO_POR_INMUEBLE.ID_PROPIETARIO = CLIENTES.ID_CLIENTE
+
+select * from INMUEBLES
+
+select * f
+
+
 SELECT CLIENTES.APELLIDO, PENDIENTES.CONCEPTO,PENDIENTES.IMPORTE, PENDIENTES.PAGADO FROM PENDIENTES INNER JOIN CLIENTES ON PENDIENTES.ID_CLIENTE = CLIENTES.ID_CLIENTE
