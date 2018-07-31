@@ -38,6 +38,8 @@
             this.lbl_propietario2 = new System.Windows.Forms.Label();
             this.lbl_propietario1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txt_dept = new System.Windows.Forms.TextBox();
+            this.lbl_dept = new System.Windows.Forms.Label();
             this.txt_obs = new System.Windows.Forms.TextBox();
             this.txt_cp = new System.Windows.Forms.TextBox();
             this.txt_piso = new System.Windows.Forms.TextBox();
@@ -69,8 +71,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.btn_guardar = new System.Windows.Forms.Button();
             this.btn_cerrar = new System.Windows.Forms.Button();
-            this.txt_dept = new System.Windows.Forms.TextBox();
-            this.lbl_dept = new System.Windows.Forms.Label();
             this.grp_box_propietarios.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -194,6 +194,22 @@
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dirección";
+            // 
+            // txt_dept
+            // 
+            this.txt_dept.Location = new System.Drawing.Point(477, 51);
+            this.txt_dept.Name = "txt_dept";
+            this.txt_dept.Size = new System.Drawing.Size(25, 23);
+            this.txt_dept.TabIndex = 16;
+            // 
+            // lbl_dept
+            // 
+            this.lbl_dept.AutoSize = true;
+            this.lbl_dept.Location = new System.Drawing.Point(436, 54);
+            this.lbl_dept.Name = "lbl_dept";
+            this.lbl_dept.Size = new System.Drawing.Size(42, 17);
+            this.lbl_dept.TabIndex = 15;
+            this.lbl_dept.Text = "Dept:";
             // 
             // txt_obs
             // 
@@ -464,22 +480,7 @@
             this.btn_cerrar.TabIndex = 20;
             this.btn_cerrar.Text = "Cerrar";
             this.btn_cerrar.UseVisualStyleBackColor = true;
-            // 
-            // txt_dept
-            // 
-            this.txt_dept.Location = new System.Drawing.Point(477, 51);
-            this.txt_dept.Name = "txt_dept";
-            this.txt_dept.Size = new System.Drawing.Size(25, 23);
-            this.txt_dept.TabIndex = 16;
-            // 
-            // lbl_dept
-            // 
-            this.lbl_dept.AutoSize = true;
-            this.lbl_dept.Location = new System.Drawing.Point(436, 54);
-            this.lbl_dept.Name = "lbl_dept";
-            this.lbl_dept.Size = new System.Drawing.Size(42, 17);
-            this.lbl_dept.TabIndex = 15;
-            this.lbl_dept.Text = "Dept:";
+            this.btn_cerrar.Click += new System.EventHandler(this.btn_cerrar_Click);
             // 
             // Crear_Inmueble
             // 

@@ -32,8 +32,16 @@ namespace AdminApp.ABM_Inmuebles
             {
                 guardarPendiente();
                 MessageBox.Show("Guardado!", "Exito");
-                //limpiarGroupBox();
+                limpiarGroupBox();
             }
+        }
+
+        private void limpiarGroupBox()
+        {
+            this.Controls.OfType<GroupBox>().ToList().ForEach(groupBox => groupBox.Controls.OfType<TextBox>().ToList().ForEach(textBox => textBox.Text = String.Empty));
+            txt_propietario1.Text = String.Empty;
+            txt_propietario2.Text = String.Empty;
+
         }
 
         private void guardarPendiente()
@@ -76,11 +84,19 @@ namespace AdminApp.ABM_Inmuebles
 
 
             pintarCamposIncompletos(camposObligatorios);
-
+            if (txt_propietario1.Text == txt_propietario2.Text)
+            {
+                MessageBox.Show("No se puede ingresar dos propietarios con el mismo nombre.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txt_propietario1.BackColor = Color.Red;
+                return false;
+            }
             if (camposObligatorios.All<Control>(campos => campos.Text != ""))
                 return true;
             else
+            {
+                MessageBox.Show("Hay campos incompletos", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
+            }
         }
 
         private void pintarCamposIncompletos(List<Control> camposObligatorios)
@@ -91,17 +107,6 @@ namespace AdminApp.ABM_Inmuebles
             camposCompletos.ForEach(campos => campos.BackColor = Color.White);
         }
 
-        private void btn_buscar_1_Click(object sender, EventArgs e)
-        {
-            cliente1 = buscar_persona();
-            txt_propietario1.Text = cliente1.nombre;
-        }
-
-        private void btn_buscar_2_Click(object sender, EventArgs e)
-        {
-            cliente2 = buscar_persona();
-            txt_propietario2.Text = cliente2.nombre;
-        }
 
         private Cliente buscar_persona()
         {
@@ -129,6 +134,25 @@ namespace AdminApp.ABM_Inmuebles
         {
             cliente1 = new Cliente();
             txt_propietario1.Text = "";
+        }
+
+
+
+        private void btn_buscar_1_Click(object sender, EventArgs e)
+        {
+            cliente1 = buscar_persona();
+            txt_propietario1.Text = cliente1.nombre;
+        }
+
+        private void btn_buscar_2_Click(object sender, EventArgs e)
+        {
+            cliente2 = buscar_persona();
+            txt_propietario2.Text = cliente2.nombre;
+        }
+
+        private void btn_cerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
