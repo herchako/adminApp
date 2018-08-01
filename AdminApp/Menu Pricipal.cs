@@ -17,6 +17,8 @@ namespace AdminApp
     {
         public MenuPrincipal()
         {
+
+
             InitializeComponent();
         }
 
@@ -42,6 +44,11 @@ namespace AdminApp
         {
             Crear_Inmueble crear_inmueble = new Crear_Inmueble();
             crear_inmueble.Show();
+        }
+
+        private void MenuPrincipal_Load(object sender, EventArgs e)
+        {
+
         }
     }
     

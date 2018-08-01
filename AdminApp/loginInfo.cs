@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace AdminApp
 {
-    public class Cliente
+    public static class LoginInfo
     {
-        public int id { get; set; }
-        public string nombre { get; set; }
+        public static string UserID;
     }
 }
