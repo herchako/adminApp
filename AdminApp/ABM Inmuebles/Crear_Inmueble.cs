@@ -39,6 +39,7 @@ namespace AdminApp.ABM_Inmuebles
         private void limpiarGroupBox()
         {
             this.Controls.OfType<GroupBox>().ToList().ForEach(groupBox => groupBox.Controls.OfType<TextBox>().ToList().ForEach(textBox => textBox.Text = String.Empty));
+            msk_nro_partida.Text = String.Empty;
             txt_propietario1.Text = String.Empty;
             txt_propietario2.Text = String.Empty;
 
@@ -61,6 +62,7 @@ namespace AdminApp.ABM_Inmuebles
             sqlCommand.Parameters.AddWithValue("@dpto", txt_dept.Text);
             sqlCommand.Parameters.AddWithValue("@localidad", txt_localidad.Text);
             sqlCommand.Parameters.AddWithValue("@codigo_postal", txt_cp.Text);
+            sqlCommand.Parameters.AddWithValue("@nro_partida", msk_nro_partida.Text);
             sqlCommand.Parameters.AddWithValue("@observaciones", txt_obs.Text);
             sqlCommand.Parameters.AddWithValue("@administracion_nombre", txt_admin_nombre.Text);
             sqlCommand.Parameters.AddWithValue("@administracion_telefono", txt_admin_telefono.Text);
@@ -154,5 +156,7 @@ namespace AdminApp.ABM_Inmuebles
         {
             this.Close();
         }
+
+
     }
 }
