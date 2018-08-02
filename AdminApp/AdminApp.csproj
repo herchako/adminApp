@@ -108,14 +108,20 @@
     <Compile Include="ABM Cliente\Crear Cliente.Designer.cs">
       <DependentUpon>Crear Cliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginForm.cs">
+    <Compile Include="Usuarios\Nuevo_Usuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.Designer.cs">
+    <Compile Include="Usuarios\Nuevo_Usuario.Designer.cs">
+      <DependentUpon>Nuevo_Usuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginInfo.cs" />
-    <Compile Include="Cliente.cs" />
+    <Compile Include="Usuarios\LoginInfo.cs" />
+    <Compile Include="ABM Cliente\Cliente.cs" />
     <Compile Include="Menu Pricipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,12 +130,13 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Seleccionar_Cliente.cs">
+    <Compile Include="ABM Cliente\Seleccionar_Cliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Seleccionar_Cliente.Designer.cs">
+    <Compile Include="ABM Cliente\Seleccionar_Cliente.Designer.cs">
       <DependentUpon>Seleccionar_Cliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Usuarios\Usuario.cs" />
     <EmbeddedResource Include="ABM Cliente\Crear Cliente.resx">
       <DependentUpon>Crear Cliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -145,7 +152,10 @@
     <EmbeddedResource Include="ABM Pendientes\Pendientes Cliente.resx">
       <DependentUpon>Pendientes Cliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
+    <EmbeddedResource Include="Usuarios\Nuevo_Usuario.resx">
+      <DependentUpon>Nuevo_Usuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu Pricipal.resx">
@@ -156,7 +166,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Seleccionar_Cliente.resx">
+    <EmbeddedResource Include="ABM Cliente\Seleccionar_Cliente.resx">
       <DependentUpon>Seleccionar_Cliente.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="AdminApp_1_TemporaryKey.pfx" />
