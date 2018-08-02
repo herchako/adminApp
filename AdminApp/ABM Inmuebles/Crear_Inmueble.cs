@@ -70,6 +70,7 @@ namespace AdminApp.ABM_Inmuebles
             sqlCommand.Parameters.AddWithValue("@encargado_nombre", txt_enc_nombre.Text);
             sqlCommand.Parameters.AddWithValue("@encargado_telefono", txt_enc_telefono.Text);
             sqlCommand.Parameters.AddWithValue("@encargado_obs", txt_enc_obs.Text);
+            MessageBox.Show(LoginInfo.UserID.ToString(), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
 
             baseDeDatos.ejecuta(sqlCommand);
