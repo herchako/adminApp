@@ -30,6 +30,8 @@ CREATE TABLE [CLIENTES](
 	[DOMICILIO_PARTIDO] [nvarchar](255) NULL,
 	[DOMICILIO_LOCALIDAD] [nvarchar](255) NULL,
 	[OBSERVACIONES] [nvarchar](max) NULL,
+	[ULTIMA_MODIFICACION] DATETIME2(3),
+	[MODIFICADO_POR] [numeric](18, 0) NULL
 	)
 GO
 
@@ -43,7 +45,9 @@ Create TABLE [PENDIENTES](
 	[DIRECCION][nvarchar](255) NULL,
 	[IMPORTE] [numeric](18, 2) NULL,
 	[PAGADO]  BIT DEFAULT 0,
-	[OBSERVACIONES] [nvarchar](255) NULL
+	[OBSERVACIONES] [nvarchar](255) NULL,
+	[ULTIMA_MODIFICACION] DATETIME2(3),
+	[MODIFICADO_POR] [numeric](18, 0) NULL 
 	)
 GO
 
@@ -64,6 +68,8 @@ CREATE TABLE [INMUEBLES](
 	[ENCARGADO_NOMBRE] [nvarchar](255) NULL,
 	[ENCARGADO_TELEFONO] [nvarchar](255) NULL,
 	[ENCARGADO_OBS] [nvarchar](255) NULL,
+	[ULTIMA_MODIFICACION] DATETIME2(3),
+	[MODIFICADO_POR] [numeric](18, 0) NULL
 	)
 GO
 
@@ -71,18 +77,25 @@ CREATE TABLE [PROPIETARIO_POR_INMUEBLE](
 	[ID_PROPIETARIO_POR_INMUEBLE] NUMERIC(18,0) IDENTITY PRIMARY KEY,
 	[ID_PROPIETARIO] NUMERIC(18,0) NULL,
 	[ID_INMUEBLE] NUMERIC(18,0) NULL,
+	[ULTIMA_MODIFICACION] DATETIME2(3),
+	[MODIFICADO_POR] [numeric](18, 0) NULL
 	)
 GO
 
 CREATE TABLE [TIPO_CLIENTES] (
 	[ID_TIPO_CLIENTE] NUMERIC(18,0) IDENTITY PRIMARY KEY,
     [DESCRIPCION] [nvarchar](255) NULL,
+	[ULTIMA_MODIFICACION] DATETIME2(3),
+	[MODIFICADO_POR] [numeric](18, 0) NULL
+	 
 	)
 GO
 
 CREATE TABLE [TIPO_CUIL_CUIT] (
 	[ID_TIPO_CUIL_CUIT] NUMERIC(18,0) IDENTITY PRIMARY KEY,
     [DESCRIPCION] [nvarchar](255) NULL,
+	[ULTIMA_MODIFICACION] DATETIME2(3),
+	[MODIFICADO_POR] [numeric](18, 0) NULL
 	)
 GO
 
@@ -90,15 +103,17 @@ CREATE TABLE [USUARIOS] (
 	[ID_USUARIO] NUMERIC(18,0) IDENTITY PRIMARY KEY,
     [NOMBRE] [nvarchar](255) NULL,
 	[CONTRASEÑA] [nvarchar](255) NULL,
-	[ULTIMA_MODIFICACION] DATETIME2(3) 
+	[ULTIMA_MODIFICACION] DATETIME2(3),
 	)
 GO
 
 /*CREACION DE STORE PROCEDURES*/
+/*CREACION DE STORE PROCEDURES*/
+/*CREACION DE STORE PROCEDURES*/
+/*CREACION DE STORE PROCEDURES*/
+/*CREACION DE STORE PROCEDURES*/
 
-
-CREATE PROCEDURE [SP_INSERTAR_CLIENTE]
-		
+create PROCEDURE [SP_INSERTAR_CLIENTE]
 		@nombre NVARCHAR(255) = null,
 		@apellido NVARCHAR(255) = null,
 		@email NVARCHAR(255) = null,
@@ -116,14 +131,15 @@ CREATE PROCEDURE [SP_INSERTAR_CLIENTE]
 		@domicilio_provincia NVARCHAR(255) = null,
 		@domicilio_partido NVARCHAR(255) = null,
 		@domicilio_localidad NVARCHAR(255) = null,
-		@observaciones NVARCHAR(255) = null
+		@observaciones NVARCHAR(255) = null,
+		@modificado_por NUMERIC(18,0) =-1
 		AS
 		BEGIN
 		SET NOCOUNT ON;
 		DECLARE	@cod_cliente numeric(18,0)
 		SET @cod_cliente= (SELECT COUNT(*) FROM dbo.CLIENTES)
-		INSERT INTO dbo.CLIENTES(COD_CLIENTE, NOMBRE, APELLIDO, EMAIL, TELEFONO, CELULAR, OTRO_TEL, ID_TIPO_CLIENTE, ID_TIPO_CUIL_CUIT, DNI, FECHA_NACIMIENTO, DOMICILIO_CALLE,DOMICILIO_ALTURA,DOMICILIO_PISO,DOMICILIO_DPTO,DOMICILIO_PROVINCIA,DOMICILIO_PARTIDO,DOMICILIO_LOCALIDAD,OBSERVACIONES)
-		VALUES(@cod_cliente,@nombre,@apellido, @email,@telefono,@celular,@otro_tel, @id_tipo_cliente, @id_tipo_cuil_cuit,@dni,@fecha_nacimiento,@domicilio_calle,@domicilio_altura,@domicilio_piso,@domicilio_dpto,@domicilio_provincia,@domicilio_partido,@domicilio_localidad, @observaciones   )
+		INSERT INTO dbo.CLIENTES(COD_CLIENTE, NOMBRE, APELLIDO, EMAIL, TELEFONO, CELULAR, OTRO_TEL, ID_TIPO_CLIENTE, ID_TIPO_CUIL_CUIT, DNI, FECHA_NACIMIENTO, DOMICILIO_CALLE,DOMICILIO_ALTURA,DOMICILIO_PISO,DOMICILIO_DPTO,DOMICILIO_PROVINCIA,DOMICILIO_PARTIDO,DOMICILIO_LOCALIDAD,OBSERVACIONES,MODIFICADO_POR)
+		VALUES(@cod_cliente,@nombre,@apellido, @email,@telefono,@celular,@otro_tel, @id_tipo_cliente, @id_tipo_cuil_cuit,@dni,@fecha_nacimiento,@domicilio_calle,@domicilio_altura,@domicilio_piso,@domicilio_dpto,@domicilio_provincia,@domicilio_partido,@domicilio_localidad, @observaciones, @modificado_por   )
 		END
 GO
 
@@ -144,19 +160,20 @@ CREATE PROCEDURE [SP_INSERTAR_INMUEBLE]
 		@administracion_obs NVARCHAR(255) = null,
 		@encargado_nombre NVARCHAR(255) = null,
 		@encargado_telefono NVARCHAR(255) = null,
-		@encargado_obs NVARCHAR(255) = null
+		@encargado_obs NVARCHAR(255) = null,
+		@modificado_por NUMERIC(18,0) =-1
 		AS
 		BEGIN
 		SET NOCOUNT ON;
 		DECLARE	@id_inmueble numeric(18,0)
-		INSERT INTO dbo.INMUEBLES(TIPO, CALLE, ALTURA, PISO, DPTO, LOCALIDAD, OBSERVACIONES, NRO_PARTIDA, CODIGO_POSTAL, ADMINISTRACION_NOMBRE, ADMINISTRACION_TELEFONO, ADMINISTRACION_OBS, ENCARGADO_NOMBRE, ENCARGADO_TELEFONO, ENCARGADO_OBS)
-		VALUES(@tipo, @calle, @altura, @piso, @dpto, @localidad, @observaciones, @nro_partida, @codigo_postal, @administracion_nombre, @administracion_telefono, @administracion_obs, @encargado_nombre, @encargado_telefono, @encargado_obs)
+		INSERT INTO dbo.INMUEBLES(TIPO, CALLE, ALTURA, PISO, DPTO, LOCALIDAD, OBSERVACIONES, NRO_PARTIDA, CODIGO_POSTAL, ADMINISTRACION_NOMBRE, ADMINISTRACION_TELEFONO, ADMINISTRACION_OBS, ENCARGADO_NOMBRE, ENCARGADO_TELEFONO, ENCARGADO_OBS, MODIFICADO_POR)
+		VALUES(@tipo, @calle, @altura, @piso, @dpto, @localidad, @observaciones, @nro_partida, @codigo_postal, @administracion_nombre, @administracion_telefono, @administracion_obs, @encargado_nombre, @encargado_telefono, @encargado_obs, @modificado_por)
 		SET @id_inmueble = SCOPE_IDENTITY();
-		INSERT INTO dbo.PROPIETARIO_POR_INMUEBLE(ID_INMUEBLE,ID_PROPIETARIO)
-		VALUES (@id_inmueble,@id_cliente_1)
+		INSERT INTO dbo.PROPIETARIO_POR_INMUEBLE(ID_INMUEBLE,ID_PROPIETARIO, MODIFICADO_POR)
+		VALUES (@id_inmueble,@id_cliente_1, @modificado_por)
 		IF @id_cliente_2 != -1
-        INSERT INTO dbo.PROPIETARIO_POR_INMUEBLE(ID_INMUEBLE,ID_PROPIETARIO)
-		VALUES (@id_inmueble,@id_cliente_2)
+        INSERT INTO dbo.PROPIETARIO_POR_INMUEBLE(ID_INMUEBLE,ID_PROPIETARIO, MODIFICADO_POR)
+		VALUES (@id_inmueble,@id_cliente_2, @modificado_por)
 		
 		END
 GO
@@ -169,18 +186,19 @@ CREATE PROCEDURE [SP_INSERTAR_PENDIENTE]
 	@direccion NVARCHAR(255) = null,
 	@importe [numeric](18, 2) = null,
 	@pagado BIT,
-	@observaciones NVARCHAR(255) = null
+	@observaciones NVARCHAR(255) = null,
+	@modificado_por NUMERIC(18,0) =-1
 		AS
 		BEGIN
 		SET NOCOUNT ON;
 		DECLARE	@cod_pendiente numeric(18,0)
 		SET @cod_pendiente= (SELECT COUNT(*) FROM dbo.PENDIENTES)
-		INSERT INTO dbo.PENDIENTES(ID_CLIENTE, COD_PENDIENTE, CONCEPTO, PERIODO, FECHA, DIRECCION, IMPORTE, PAGADO, OBSERVACIONES)
-		VALUES(@id_cliente, @cod_pendiente, @concepto, @periodo, @fecha, @direccion, @importe, @pagado, @observaciones)
+		INSERT INTO dbo.PENDIENTES(ID_CLIENTE, COD_PENDIENTE, CONCEPTO, PERIODO, FECHA, DIRECCION, IMPORTE, PAGADO, OBSERVACIONES, MODIFICADO_POR)
+		VALUES(@id_cliente, @cod_pendiente, @concepto, @periodo, @fecha, @direccion, @importe, @pagado, @observaciones, @modificado_por)
 		END
 GO
 
-create PROCEDURE [SP_INSERTAR_USUARIO]
+CREATE PROCEDURE [SP_INSERTAR_USUARIO]
 	@nombre NVARCHAR(255),
 	@contrasena NVARCHAR(255)
 		AS
@@ -347,11 +365,12 @@ CREATE PROCEDURE [SP_ACTUALIZAR_CLIENTE_POR_ID]
 	@domicilio_provincia NVARCHAR(255) = null,
 	@domicilio_partido NVARCHAR(255) = null,
 	@domicilio_localidad NVARCHAR(255) = null,
-	@observaciones NVARCHAR(255) = null
+	@observaciones NVARCHAR(255) = null,
+	@modificado_por NUMERIC(18,0) =-1
 	AS
 	BEGIN
 	UPDATE  DBO.CLIENTES
-	SET NOMBRE=@nombre, APELLIDO=@apellido, EMAIL=@email, TELEFONO=@telefono, CELULAR=@celular, OTRO_TEL=@otro_tel, ID_TIPO_CLIENTE=@id_tipo_cliente, ID_TIPO_CUIL_CUIT=@id_tipo_cuil_cuit, DNI=@dni, FECHA_NACIMIENTO=@fecha_nacimiento, DOMICILIO_CALLE=@domicilio_calle,DOMICILIO_ALTURA=@domicilio_altura,DOMICILIO_PISO=@domicilio_piso,DOMICILIO_DPTO=@domicilio_dpto,DOMICILIO_PROVINCIA=@domicilio_provincia,DOMICILIO_PARTIDO=@domicilio_partido,DOMICILIO_LOCALIDAD=@domicilio_localidad,OBSERVACIONES=@observaciones
+	SET NOMBRE=@nombre, APELLIDO=@apellido, EMAIL=@email, TELEFONO=@telefono, CELULAR=@celular, OTRO_TEL=@otro_tel, ID_TIPO_CLIENTE=@id_tipo_cliente, ID_TIPO_CUIL_CUIT=@id_tipo_cuil_cuit, DNI=@dni, FECHA_NACIMIENTO=@fecha_nacimiento, DOMICILIO_CALLE=@domicilio_calle,DOMICILIO_ALTURA=@domicilio_altura,DOMICILIO_PISO=@domicilio_piso,DOMICILIO_DPTO=@domicilio_dpto,DOMICILIO_PROVINCIA=@domicilio_provincia,DOMICILIO_PARTIDO=@domicilio_partido,DOMICILIO_LOCALIDAD=@domicilio_localidad,OBSERVACIONES=@observaciones, MODIFICADO_POR=@modificado_por
 	WHERE ID_CLIENTE=@id_cliente
 	END
 GO
@@ -364,7 +383,8 @@ CREATE PROCEDURE [SP_ACTUALIZAR_PENDIENTE_POR_ID_PENDIENTE]
 	@direccion NVARCHAR(255) = null,
 	@importe [numeric](18, 2) = null,
 	@pagado BIT,
-	@observaciones NVARCHAR(255) = null
+	@observaciones NVARCHAR(255) = null,
+	@modificado_por NUMERIC(18,0) =-1
 	AS
 	BEGIN
 	UPDATE  PENDIENTES
@@ -375,27 +395,29 @@ CREATE PROCEDURE [SP_ACTUALIZAR_PENDIENTE_POR_ID_PENDIENTE]
 	DIRECCION= IsNull(@direccion, direccion), 
 	IMPORTE= IsNull(@importe, importe),
 	PAGADO= IsNull(@pagado, pagado),
-	OBSERVACIONES= IsNull(@observaciones, observaciones)
+	OBSERVACIONES= IsNull(@observaciones, observaciones),
+	MODIFICADO_POR= IsNull(@modificado_por,null)
 	WHERE  ID_PENDIENTE = @id_pendiente
 	END
 GO
 
 CREATE PROCEDURE [SP_INSERTAR_PENDIENTE]
-	@nombre NVARCHAR(255) 
-	@contrasena NVARCHAR(255) = null,
+	@id_cliente NUMERIC(18,0),
+	@concepto NVARCHAR(255) = null,
 	@periodo NVARCHAR(255) = null,
 	@fecha NVARCHAR(255) = null,
 	@direccion NVARCHAR(255) = null,
 	@importe [numeric](18, 2) = null,
 	@pagado BIT,
-	@observaciones NVARCHAR(255) = null
+	@observaciones NVARCHAR(255) = null,
+	@modificado_por NUMERIC(18,0) =-1
 		AS
 		BEGIN
 		SET NOCOUNT ON;
 		DECLARE	@cod_pendiente numeric(18,0)
 		SET @cod_pendiente= (SELECT COUNT(*) FROM dbo.PENDIENTES)
-		INSERT INTO dbo.PENDIENTES(ID_CLIENTE, COD_PENDIENTE, CONCEPTO, PERIODO, FECHA, DIRECCION, IMPORTE, PAGADO, OBSERVACIONES)
-		VALUES(@id_cliente, @cod_pendiente, @concepto, @periodo, @fecha, @direccion, @importe, @pagado, @observaciones)
+		INSERT INTO dbo.PENDIENTES(ID_CLIENTE, COD_PENDIENTE, CONCEPTO, PERIODO, FECHA, DIRECCION, IMPORTE, PAGADO, OBSERVACIONES, MODIFICADO_POR)
+		VALUES(@id_cliente, @cod_pendiente, @concepto, @periodo, @fecha, @direccion, @importe, @pagado, @observaciones, @modificado_por)
 		END
 GO
 
@@ -443,12 +465,42 @@ GO
 
 /*CREACION DE TRIGGERS*/
 
-CREATE TRIGGER UPDATE_ULTIMA_MODIFICACION ON dbo.USUARIOS AFTER INSERT, UPDATE 
+CREATE TRIGGER UPDATE_ULTIMA_MODIFICACION_CLIENTES ON dbo.CLIENTES AFTER INSERT, UPDATE 
+AS
+   UPDATE dbo.CLIENTES  
+   SET ULTIMA_MODIFICACION = SYSDATETIME() FROM Inserted i
+   WHERE dbo.CLIENTES.ID_CLIENTE = i.ID_CLIENTE
+GO
+CREATE TRIGGER UPDATE_ULTIMA_MODIFICACION_USUARIOS ON dbo.USUARIOS AFTER INSERT, UPDATE 
 AS
    UPDATE dbo.USUARIOS  
    SET ULTIMA_MODIFICACION = SYSDATETIME() FROM Inserted i
    WHERE dbo.USUARIOS.ID_USUARIO = i.ID_USUARIO
 GO
+CREATE TRIGGER UPDATE_ULTIMA_MODIFICACION_INMUEBLES ON dbo.INMUEBLES AFTER INSERT, UPDATE 
+AS
+   UPDATE dbo.INMUEBLES  
+   SET ULTIMA_MODIFICACION = SYSDATETIME() FROM Inserted i
+   WHERE dbo.INMUEBLES.ID_INMUEBLE = i.ID_INMUEBLE
+GO
+CREATE TRIGGER UPDATE_ULTIMA_MODIFICACION_PENDIENTES ON dbo.PENDIENTES AFTER INSERT, UPDATE 
+AS
+   UPDATE dbo.PENDIENTES  
+   SET ULTIMA_MODIFICACION = SYSDATETIME() FROM Inserted i
+   WHERE dbo.PENDIENTES.ID_PENDIENTE = i.ID_PENDIENTE
+GO
+CREATE TRIGGER UPDATE_ULTIMA_MODIFICACION_PROPIETARIO_POR_INMUEBLE ON dbo.PROPIETARIO_POR_INMUEBLE AFTER INSERT, UPDATE 
+AS
+   UPDATE dbo.PROPIETARIO_POR_INMUEBLE
+   SET ULTIMA_MODIFICACION = SYSDATETIME() FROM Inserted i
+   WHERE dbo.PROPIETARIO_POR_INMUEBLE.ID_PROPIETARIO_POR_INMUEBLE = i.ID_PROPIETARIO_POR_INMUEBLE
+GO
+
+
+
+
+
+
 
  
 
@@ -465,7 +517,14 @@ GO
 ALTER TABLE PROPIETARIO_POR_INMUEBLE DROP CONSTRAINT FK_ID_INMUEBLE_PROPIETARIO_POR_INMUEBLE_ID_INMUEBLE
 GO
 DROP TRIGGER UPDATE_ULTIMA_MODIFICACION
-
+GO
+DROP TRIGGER UPDATE_ULTIMA_MODIFICACION_CLIENTES
+GO
+DROP TRIGGER UPDATE_ULTIMA_MODIFICACION_INMUEBLES
+go
+DROP TRIGGER UPDATE_ULTIMA_MODIFICACION_PENDIENTES
+GO
+DROP TRIGGER UPDATE_ULTIMA_MODIFICACION_PROPIETARIO_POR_INMUEBLE
 GO
 DROP TABLE [PENDIENTES]
 GO
@@ -540,7 +599,8 @@ select INMUEBLES.TIPO, PROPIETARIO_POR_INMUEBLE.ID_PROPIETARIO_POR_INMUEBLE,CLIE
 inner join PROPIETARIO_POR_INMUEBLE on PROPIETARIO_POR_INMUEBLE.ID_INMUEBLE = INMUEBLES.ID_INMUEBLE
 inner join CLIENTES on PROPIETARIO_POR_INMUEBLE.ID_PROPIETARIO = CLIENTES.ID_CLIENTE
 
-select * from USUARIOS
+select * from PENDIENTES
+
 
 
 		isnull((SELECT ID_USUARIO, NOMBRE, CONTRASEÑA FROM DBO.USUARIOS

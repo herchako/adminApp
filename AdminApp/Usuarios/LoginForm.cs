@@ -5,7 +5,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
-namespace AdminApp;
+namespace AdminApp
 {
     public partial class LoginForm : Form
     {
@@ -25,15 +25,15 @@ namespace AdminApp;
             string contrasena_ingresada;
             if (dt != null)
             {
-                contrasena_ingresada = dt.Rows[0][2].ToString() ;
+                contrasena_ingresada = dt.Rows[0][2].ToString();
                 if (contrasena_ingresada != EncryptText(txt_contrasena.Text))
                 {
                     MessageBox.Show("Contraseña incorrecta, vuelva a intentarlo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                LoginInfo.UserID = int.Parse(dt.Rows[0][0].ToString());
-                DialogResult = DialogResult.OK;
+                    LoginInfo.UserID = int.Parse(dt.Rows[0][0].ToString());
+                    DialogResult = DialogResult.OK;
                 }
 
             }
@@ -144,7 +144,6 @@ namespace AdminApp;
 
         private void insertar_nuevo_usuario(Usuario usuario_nuevo)
         {
-
             BaseDeDatos baseDeDatos = BaseDeDatos.Instance;
             SqlCommand sqlCommand = new SqlCommand();
             sqlCommand.CommandText = "SP_INSERTAR_USUARIO";
@@ -152,7 +151,7 @@ namespace AdminApp;
             sqlCommand.Parameters.Clear();
             sqlCommand.Parameters.AddWithValue("@nombre", usuario_nuevo.nombre);
             sqlCommand.Parameters.AddWithValue("@contrasena ", EncryptText(usuario_nuevo.contrasena));
-            baseDeDatos.ejecuta(sqlCommand);
+            baseDeDatos.ejecuta_sin_auditar(sqlCommand);
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -166,7 +165,7 @@ namespace AdminApp;
             {
 
                 validar_usuario();
-                
+
             }
 
 
