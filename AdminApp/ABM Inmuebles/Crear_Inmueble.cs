@@ -42,7 +42,6 @@ namespace AdminApp.ABM_Inmuebles
             msk_nro_partida.Text = String.Empty;
             txt_propietario1.Text = String.Empty;
             txt_propietario2.Text = String.Empty;
-
         }
 
         private void guardarPendiente()
@@ -82,7 +81,6 @@ namespace AdminApp.ABM_Inmuebles
             camposObligatorios.Add(txt_calle);
             camposObligatorios.Add(txt_nro);
 
-
             pintarCamposIncompletos(camposObligatorios);
             if (txt_propietario1.Text == txt_propietario2.Text)
             {
@@ -106,7 +104,6 @@ namespace AdminApp.ABM_Inmuebles
             var camposCompletos = camposObligatorios.FindAll(campos => campos.Text != "");
             camposCompletos.ForEach(campos => campos.BackColor = Color.White);
         }
-
 
         private Cliente buscar_persona()
         {
@@ -135,8 +132,6 @@ namespace AdminApp.ABM_Inmuebles
             cliente1 = new Cliente();
             txt_propietario1.Text = "";
         }
-
-
 
         private void btn_buscar_1_Click(object sender, EventArgs e)
         {
